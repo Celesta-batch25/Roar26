@@ -1,0 +1,1363 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prefects' Guild – Since 1952</title>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ── Variables ── */
+  :root {
+    --crimson: #8B0040;
+    --crimson-deep: #5e002b;
+    --crimson-light: rgba(139,0,64,0.85);
+    --gold: #D4A017;
+    --gold-light: #f0c040;
+    --white: #ffffff;
+    --off-white: rgba(255,255,255,0.92);
+    --glass-bg: rgba(60,10,30,0.45);
+    --glass-border: rgba(212,160,23,0.35);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: linear-gradient(180deg, #1a0010 0%, #260019 100%);
+    color: var(--white);
+    overflow-x: hidden;
+    min-height: 100%;
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    z-index: 1000;
+  }
+
+  .nav-logo {
+    width: 90px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .nav-pill {
+    display: flex;
+    gap: 0;
+    background: var(--crimson-deep);
+    border-radius: 50px;
+    padding: 10px 6px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.5);
+  }
+
+  .nav-pill a {
+    color: var(--white);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 8px 30px;
+    border-radius: 40px;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .nav-pill a:hover,
+  .nav-pill a.active {
+    background: rgba(255,255,255,0.15);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    min-height: 100vh;
+    position: relative;
+    padding-top: 100px;
+  }
+
+  /* ──────────────────────────────────────
+     HOME SECTION
+  ────────────────────────────────────── */
+  #home {
+    overflow: hidden;
+    padding-top: 0;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: url('assets/background image.png') center / cover no-repeat;
+    height: 80%;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.75) saturate(0.9);
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(146, 0, 90, 0.08) 0%,
+      rgba(76, 0, 47, 0.312) 35%,
+      rgba(76, 0, 47, 0.508) 58%,
+      rgba(26,0,16,0.55) 100%
+    );
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    text-align: center;
+  }
+
+  .carousel-dots {
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .dot.active { background: var(--white); }
+
+  .hero-brand {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+
+  .hero-logo {
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.6));
+  }
+
+  .scroll-cue {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .scroll-line {
+    width: 2px;
+    height: 56px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+
+  .scroll-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--white);
+    opacity: 0.8;
+  }
+
+  .hero-gallery {
+    position: relative;
+    width: min(960px, 90vw);
+    height: 420px;
+    margin: 24px auto 0;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 18px 60px rgba(0,0,0,0.35);
+  }
+
+  .gallery-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease;
+  }
+
+  .gallery-image.active {
+    opacity: 1;
+  }
+
+  /* ──────────────────────────────────────
+     REDESIGNED TOP BOARD SECTION
+     (Inspired by e3e34a1753e22b73d2b6d783853da947.gif)
+  ────────────────────────────────────── */
+  #top-board {
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 120px;
+    padding-bottom: 40px;
+  }
+
+  .board-bg {
+    position: absolute;
+    inset: 0;
+    background: url('assets/school-building.jpg') center / cover no-repeat;
+    opacity: 0.06;
+    filter: saturate(0.2) blur(4px);
+    z-index: 1;
+  }
+
+  .board-showcase-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Structural 2-Column Split matching the gif layout */
+  .board-main-split {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+  }
+
+  /* Left Side: Biographical Info Details */
+  .board-bio-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    position: relative;
+  }
+
+  .board-section-tag {
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .board-display-name {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(36px, 4.5vw, 64px);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 12px;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform-origin: left center;
+  }
+
+  .board-display-role {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: clamp(16px, 1.6vw, 22px);
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .board-display-desc {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(15px, 1.2vw, 17px);
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 620px;
+    margin-bottom: 40px;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  /* Slider Navigation Arrows Overlapping Main Workspace Area */
+  .board-nav-arrows {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .board-arrow-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    color: var(--white);
+  }
+
+  .board-arrow-btn:hover {
+    border-color: var(--gold);
+    background: rgba(139, 0, 64, 0.2);
+    transform: scale(1.05);
+    color: var(--gold-light);
+  }
+
+  .board-arrow-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: transform 0.3s ease;
+  }
+
+  .board-arrow-btn.prev-btn:hover svg { transform: translateX(-2px); }
+  .board-arrow-btn.next-btn:hover svg { transform: translateX(2px); }
+
+  /* Right Side: Portrait Cutout Layer Box */
+  .board-portrait-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    min-height: 480px;
+  }
+
+  .portrait-frame-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
+  .portrait-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 16px;
+    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.8));
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Bottom Row Strip Selection System */
+  .board-carousel-dock {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    margin-top: 50px;
+    background: rgba(26, 0, 16, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(212, 160, 23, 0.15);
+    padding: 24px 0;
+  }
+
+  .dock-scroll-track {
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    padding: 10px 60px;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide default scrollbar Firefox */
+  }
+
+  .dock-scroll-track::-webkit-scrollbar {
+    display: none; /* Hide default scrollbar Chrome/Safari */
+  }
+
+  .dock-thumb-card {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 110px;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .thumb-img-wrapper {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    padding: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .thumb-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+    background: #260019;
+  }
+
+  .thumb-name {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    transition: color 0.3s ease;
+  }
+
+  .thumb-role {
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--gold);
+    opacity: 0.7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    margin-top: 2px;
+  }
+
+  /* Active/Hover states matching the layout system animation rules */
+  .dock-thumb-card:hover .thumb-img-wrapper {
+    transform: translateY(-4px);
+    background: rgba(214, 160, 23, 0.5);
+  }
+
+  .dock-thumb-card:hover .thumb-name {
+    color: var(--white);
+  }
+
+  .dock-thumb-card.active-thumb {
+    transform: scale(1.08);
+  }
+
+  .dock-thumb-card.active-thumb .thumb-img-wrapper {
+    background: linear-gradient(135deg, var(--gold), var(--crimson));
+    box-shadow: 0 0 20px rgba(212, 160, 23, 0.4);
+  }
+
+  .dock-thumb-card.active-thumb .thumb-name {
+    color: var(--white);
+    font-weight: 800;
+  }
+
+  .dock-thumb-card.active-thumb .thumb-role {
+    opacity: 1;
+    color: var(--gold-light);
+  }
+
+  /* Animation Wipe State Classes controlled via JS engine trigger */
+  .transition-wipe-out {
+    opacity: 0 !important;
+    transform: translateY(15px) !important;
+  }
+  
+  .portrait-wipe-out {
+    opacity: 0 !important;
+    transform: scale(0.95) !important;
+  }
+
+  /* ──────────────────────────────────────
+     ABOUT US SECTION
+  ────────────────────────────────────── */
+  #about {
+    background: transparent;
+    position: relative;
+    overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .about-bg {
+    position: absolute;
+    inset: 0;
+    background: url('assets/school-building.jpg') center / cover no-repeat;
+    opacity: 0.18;
+    filter: saturate(0.4);
+  }
+
+  .about-inner {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    width: 100%;
+    max-width: 960px;
+  }
+
+  .about-card {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 36px;
+    background: rgba(28,5,18,0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1.5px solid rgba(212,160,23,0.28);
+    border-radius: 28px;
+    padding: 56px 60px;
+    position: relative;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.06) inset,
+      0 24px 80px rgba(0,0,0,0.44),
+      0 0 60px rgba(212,160,23,0.08);
+    transform: translateZ(0);
+    will-change: transform, backdrop-filter;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, rgba(212,160,23,0.5), transparent 50%, rgba(212,160,23,0.2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    padding: 1px;
+    pointer-events: none;
+  }
+
+  .about-card-logo {
+    position: absolute;
+    top: 32px;
+    right: 40px;
+    width: 90px;
+    opacity: 0.95;
+  }
+
+  .about-card-header {
+    display: grid;
+    gap: 18px;
+    grid-column: 1 / -1;
+  }
+
+  .about-subtitle {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(16px, 1.2vw, 18px);
+    line-height: 1.8;
+    color: var(--off-white);
+    max-width: 700px;
+  }
+
+  .about-copy {
+    display: grid;
+    gap: 18px;
+  }
+
+  .about-copy p {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(15px, 1.25vw, 17px);
+    line-height: 1.9;
+    color: var(--off-white);
+  }
+
+  .about-features {
+    display: grid;
+    gap: 14px;
+  }
+
+  .about-feature {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(212,160,23,0.18);
+    border-radius: 18px;
+    padding: 18px 20px;
+  }
+
+  .about-feature h4 {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    margin: 0 0 6px;
+    color: var(--white);
+    font-size: clamp(16px, 1.2vw, 18px);
+  }
+
+  .about-feature p {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(14px, 1.05vw, 15px);
+    line-height: 1.75;
+    color: var(--off-white);
+  }
+
+  .about-pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 12px;
+    grid-column: 1 / -1;
+  }
+
+  .about-pill {
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(212,160,23,0.22);
+    background: rgba(255,255,255,0.05);
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .about-heading {
+    font-family: 'UnifrakturMaguntia', cursive;
+    font-size: clamp(36px, 5vw, 58px);
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  /* ──────────────────────────────────────
+     PROJECTS SECTION
+  ────────────────────────────────────── */
+  #projects {
+    position: relative;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .projects-inner {
+    position: relative;
+    z-index: 2;
+    padding: 40px 60px;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .projects-heading {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(34px, 5vw, 48px);
+    margin-bottom: 24px;
+    color: var(--white);
+    text-align: left;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .project-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(212,160,23,0.18);
+    border-radius: 24px;
+    padding: 0;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212,160,23,0.35);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+  }
+
+  .project-card-media {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: rgba(0,0,0,0.12);
+  }
+
+  .project-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .project-card:hover .project-card-media img {
+    transform: scale(1.05);
+  }
+
+  .project-card-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .project-card h3 {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    margin: 0;
+    font-size: clamp(20px, 2vw, 24px);
+    color: var(--white);
+  }
+
+  .project-card p {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(14px, 1.1vw, 16px);
+    line-height: 1.8;
+    color: var(--off-white);
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: rgba(0,0,0,0.92);
+    color: var(--off-white);
+    padding: 36px 20px 28px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .footer-logo {
+    width: 84px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.08);
+    padding: 8px;
+  }
+
+  .footer-brand strong {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    letter-spacing: 1.2px;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+
+  .footer-brand p,
+  .footer-column p,
+  .footer-column a,
+  .footer-note {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.78);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .footer-column {
+    display: grid;
+    gap: 12px;
+  }
+
+  .footer-column h4 {
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .footer-column a {
+    color: rgba(255,255,255,0.78);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-column a:hover {
+    color: var(--white);
+  }
+
+  .footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    font-size: 13px;
+    color: rgba(255,255,255,0.86);
+  }
+
+  .footer-note {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.64);
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ── Fade-up Scroll animation ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+    will-change: transform, opacity;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ──────────────────────────────────────
+     RESPONSIVE INTERACTION RESPONSIVENESS
+  ────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .board-showcase-container { padding: 0 40px; }
+    .board-main-split { gap: 40px; }
+    .dock-scroll-track { padding: 10px 40px; }
+  }
+
+  @media (max-width: 900px) {
+    body { background-attachment: scroll; }
+    
+    /* Responsive Split Refactoring for Top Board Workspace */
+    .board-main-split {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .board-bio-side {
+      text-align: center;
+      align-items: center;
+      order: 2;
+    }
+    .board-display-desc { margin-left: auto; margin-right: auto; }
+    .board-portrait-side {
+      order: 1;
+      min-height: auto;
+    }
+    .portrait-frame-wrapper {
+      max-width: 320px;
+    }
+
+    .about-card { 
+      grid-template-columns: 1fr;
+      padding: 40px 28px; 
+    }
+    .projects-inner { padding: 30px 28px; }
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    nav {
+      flex-direction: column;
+      align-items: center;
+      top: 12px;
+      width: 100%;
+      padding: 0 10px;
+    }
+    .nav-logo { display: none !important; }
+    .nav-pill { flex-wrap: wrap; justify-content: center; gap: 4px; padding: 6px; width: 100%; max-width: 480px;}
+    .nav-pill a { padding: 8px 12px; font-size: 11px; flex: 1; text-align: center; white-space: nowrap;}
+    .hero-brand { flex-direction: column; align-items: center; }
+    .hero-gallery { height: 320px; }
+    .projects-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 500px) {
+    #top-board { padding-top: 140px; padding-bottom: 20px; }
+    .board-showcase-container { padding: 0 20px; }
+    .portrait-frame-wrapper { max-width: 260px; }
+    .board-nav-arrows { width: 100%; justify-content: center; }
+    .board-carousel-dock { margin-top: 30px; padding: 16px 0; }
+    .dock-scroll-track { gap: 20px; padding: 10px 20px; }
+    .dock-thumb-card { width: 85px; }
+    .thumb-img-wrapper { width: 56px; height: 56px; margin-bottom: 8px; }
+    
+    .hero-logo { width: 100%; max-width: 320px; }
+    .hero-gallery { width: 100%; }
+    .about-card { padding: 32px 20px; }
+    .about-inner { padding: 28px 18px; }
+    .projects-inner { padding: 24px 18px; }
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 0 8px;
+    }
+    .footer-note { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <img src="assets/New Logo Colour Transparent BG.png" alt="Prefects' Guild Logo" class="nav-logo" onerror="this.style.display='none'">
+  <div class="nav-pill">
+    <a href="#home" class="active">HOME</a>
+    <a href="#top-board">TOP BOARD</a>
+    <a href="#about">ABOUT US</a>
+    <a href="#projects">PROJECTS</a>
+  </div>
+</nav>
+
+<!-- HOME SECTION -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="hero-brand fade-up">
+      <img src="assets/New Logo Colour Transparent BG.png" alt="Prefects' Guild Logo" class="hero-logo"
+           onerror="this.style.display='none'">
+    </div>
+
+    <div class="carousel-dots fade-up">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <div class="scroll-cue fade-up" style="transition-delay:0.3s">
+      <div class="scroll-line"></div>
+      <div class="scroll-label">SCROLL</div>
+    </div>
+  </div>
+</section>
+
+<!-- REDESIGNED TOP BOARD SECTION (Consistent with e3e34a1753e22b73d2b6d783853da947.gif) -->
+<section id="top-board">
+  <div class="board-bg"></div>
+
+  <div class="board-showcase-container">
+    <div class="board-main-split">
+      
+      <!-- Left Column Content: Biographical Text & Navigation Engine -->
+      <div class="board-bio-side">
+        <span class="board-section-tag">Prefects' Executive Board 2025 – 26</span>
+        <h2 class="board-display-name" id="boardDisplayName">Induvi Dinethma</h2>
+        <div class="board-display-role" id="boardDisplayRole">Head Prefect</div>
+        <p class="board-display-desc" id="boardDisplayDesc">
+          Induvi Dinethma serves as Head Prefect on the executive board, guiding school culture, student events, and leadership with confidence.
+        </p>
+        
+        <!-- Slider Navigation Controls -->
+        <div class="board-nav-arrows">
+          <button class="board-arrow-btn prev-btn" onclick="navigateShowcase(-1)" aria-label="Previous Prefect">
+            <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+          </button>
+          <button class="board-arrow-btn next-btn" onclick="navigateShowcase(1)" aria-label="Next Prefect">
+            <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column Content: Main Display Portrait Frame -->
+      <div class="board-portrait-side">
+        <div class="portrait-frame-wrapper">
+          <img src="assets/INDUVI DINETHMA.png" alt="Induvi Dinethma" class="portrait-main-img" id="boardMainImg" onerror="this.src='assets/placeholder.png'">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Horizontal Slider Selection Track -->
+  <div class="board-carousel-dock">
+    <div class="dock-scroll-track" id="dockScrollTrack">
+      <!-- Dynamic Node Insertion via JavaScript -->
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT US SECTION -->
+<section id="about">
+  <div class="about-bg"></div>
+
+  <div class="about-inner">
+    <div class="about-card fade-up">
+      <img src="assets/New Logo Colour Transparent BG.png" alt="Logo" class="about-card-logo"
+           onerror="this.style.display='none'">
+
+      <div class="about-card-header">
+        <h2 class="about-heading">About us</h2>
+        <p class="about-subtitle">The Prefects' Guild is the leadership core of our school community. We champion student voice, academic excellence, and a legacy of respect, service, and discipline.</p>
+      </div>
+
+      <div class="about-copy">
+        <p>Since 1952, our prefects have led by example across classrooms, sports fields, and campus life. We mentor younger students, coordinate key school events, and help preserve traditions while bringing fresh energy to every year.</p>
+        <p>Our mission is to develop strong character, foster collaboration, and empower every prefect to become a better leader, role model, and ambassador for the school.</p>
+      </div>
+
+      <div class="about-features">
+        <div class="about-feature">
+          <h4>Student Leadership</h4>
+          <p>Prefects guide assemblies, organize activities, and represent student interests with pride.</p>
+        </div>
+        <div class="about-feature">
+          <h4>Community Spirit</h4>
+          <p>We lead service efforts, mentorship programs, and initiatives that build school unity.</p>
+        </div>
+        <div class="about-feature">
+          <h4>Academic Culture</h4>
+          <p>Our prefects support study habits, moral conduct, and the pursuit of excellence.</p>
+        </div>
+      </div>
+
+      <div class="about-pill-list">
+        <span class="about-pill">Integrity</span>
+        <span class="about-pill">Service</span>
+        <span class="about-pill">Respect</span>
+        <span class="about-pill">Tradition</span>
+        <span class="about-pill">Growth</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section id="projects">
+  <div class="projects-inner">
+    <h2 class="projects-heading fade-up">Projects</h2>
+    <div class="projects-grid fade-up">
+      <article class="project-card">
+        <div class="project-card-media">
+          <img src="assets/Background image.png" alt="Leadership Showcase project" loading="lazy">
+        </div>
+        <div class="project-card-content">
+          <h3>Leadership Showcase</h3>
+          <p>A curated project highlighting prefect-led events, student council initiatives, and community engagement across the year.</p>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-card-media">
+          <img src="assets/school-building.jpg" alt="Community Impact project" loading="lazy">
+        </div>
+        <div class="project-card-content">
+          <h3>Community Impact</h3>
+          <p>Stories of campus improvement, mentorship programs, and service activities driven by the Prefects' Guild.</p>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="project-card-media">
+          <img src="assets/239623594_1920590834790161_1604849225847124770_n.jpg" alt="Future Goals project" loading="lazy">
+        </div>
+        <div class="project-card-content">
+          <h3>Future Goals</h3>
+          <p>A forward-looking plan for the next executive board, focusing on culture, collaboration, and academic excellence.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer fade-up">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/New Logo Colour Transparent BG.png" alt="Prefects' Guild Logo" class="footer-logo" onerror="this.style.display='none'">
+      <div>
+        <strong>Prefects' Guild</strong>
+        <p>Leadership, service, and tradition united to support every student in our school community.</p>
+      </div>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <a href="#home">Home</a>
+        <a href="#top-board">Top Board</a>
+        <a href="#about">About Us</a>
+        <a href="#projects">Projects</a>
+      </div>
+
+      <div class="footer-column">
+        <h4>Get in Touch</h4>
+        <p>prefects@guild.school</p>
+        <p>+94 70 123 4567</p>
+        <div class="footer-social">
+          <span class="footer-pill">Instagram</span>
+          <span class="footer-pill">LinkedIn</span>
+          <span class="footer-pill">Campus News</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-note">© 2025 Prefects' Guild. All rights reserved. Crafted for a modern school leadership showcase.</div>
+  </div>
+</footer>
+
+<script>
+  /* ── Prefects Unified Data Layer Object Array ── */
+  const prefectsData = [
+    { name: "Induvi Dinethma", role: "Head Prefect" },
+    { name: "Laksara Chathuranga", role: "Academic Prefect" },
+    { name: "Sayumi Wijenayake", role: "Sports Prefect" },
+    { name: "Hiruni Amaya", role: "Culture Prefect" },
+    { name: "Kaveesha Yahampath", role: "Head Prefect" },
+    { name: "Yesmi Bihansa", role: "Head Prefect" },
+    { name: "Venura Randana", role: "Head Prefect" },
+    { name: "Sethumi Lisara", role: "Head Prefect" },
+    { name: "Malini De Zoysa", role: "Deputy Head Prefect" },
+    { name: "Kavindu Ramanayake", role: "Senior Deputy Head Prefect" },
+    { name: "Nisal Nanayakkara", role: "Assistant Head Prefect" },
+    { name: "Imalshi Abisheka", role: "Student Voice Prefect" },
+    { name: "Dewmi Tharupathini I", role: "Arts Prefect" },
+    { name: "Chamudi Pramodya", role: "Environmental Prefect" },
+    { name: "Sadesh Randunu", role: "Digital Prefect" },
+    { name: "Radinsa Thewmini I", role: "Community Prefect" },
+    { name: "Dulmini Deshika", role: "Debate Prefect" },
+    { name: "Thasini Nesakya", role: "Library Prefect" },
+    { name: "Isuri Upeksha", role: "Outreach Prefect" },
+    { name: "Nimsara Rajasinghe", role: "Mentor Prefect" }
+  ];
+
+  let currentPrefectIndex = 0;
+  let isTransitioning = false;
+
+  /* ── Initialization & Setup ── */
+  window.addEventListener('DOMContentLoaded', () => {
+    buildCarouselDock();
+    setActivePrefect(0, false);
+    setupScrollAnimations();
+  });
+
+  /* ── Build the Interactive Horizontal Strip Selection Dock ── */
+  function buildCarouselDock() {
+    const track = document.getElementById('dockScrollTrack');
+    track.innerHTML = '';
+
+    prefectsData.forEach((prefect, index) => {
+      const filename = encodeURIComponent(prefect.name) + '.png';
+      
+      const thumbCard = document.createElement('button');
+      thumbCard.className = 'dock-thumb-card';
+      thumbCard.id = `thumb-${index}`;
+      thumbCard.setAttribute('onclick', `selectPrefect(${index})`);
+      thumbCard.setAttribute('aria-label', `View profile of ${prefect.name}`);
+
+      thumbCard.innerHTML = `
+        <div class="thumb-img-wrapper">
+          <img src="assets/${filename}" alt="${prefect.name}" onerror="this.src='assets/placeholder.png'">
+        </div>
+        <div class="thumb-name">${prefect.name}</div>
+        <div class="thumb-role">${prefect.role}</div>
+      `;
+      track.appendChild(thumbCard);
+    });
+  }
+
+  /* ── Interactive Selection Core Engine ── */
+  function selectPrefect(index) {
+    if (index === currentPrefectIndex || isTransitioning) return;
+    setActivePrefect(index, true);
+  }
+
+  function navigateShowcase(direction) {
+    if (isTransitioning) return;
+    let newIndex = currentPrefectIndex + direction;
+    if (newIndex < 0) newIndex = prefectsData.length - 1;
+    if (newIndex >= prefectsData.length) newIndex = 0;
+    setActivePrefect(newIndex, true);
+  }
+
+  /* ── Update Display Content with Fine Animations ── */
+  function setActivePrefect(index, animate = true) {
+    isTransitioning = true;
+    currentPrefectIndex = index;
+
+    const nameEl = document.getElementById('boardDisplayName');
+    const roleEl = document.getElementById('boardDisplayRole');
+    const descEl = document.getElementById('boardDisplayDesc');
+    const imgEl = document.getElementById('boardMainImg');
+
+    const data = prefectsData[index];
+    const filename = encodeURIComponent(data.name) + '.png';
+
+    // Update Dock strip tracking selectors
+    document.querySelectorAll('.dock-thumb-card').forEach((card, i) => {
+      card.classList.toggle('active-thumb', i === index);
+    });
+
+    // Auto Center Scroll Position over target Thumbnail Card on Mobile devices or Trackers
+    const targetThumb = document.getElementById(`thumb-${index}`);
+    if (targetThumb) {
+      const track = document.getElementById('dockScrollTrack');
+      const trackWidth = track.clientWidth;
+      const thumbLeft = targetThumb.offsetLeft;
+      const thumbWidth = targetThumb.clientWidth;
+      track.scrollTo({
+        left: thumbLeft - (trackWidth / 2) + (thumbWidth / 2),
+        behavior: 'smooth'
+      });
+    }
+
+    if (animate) {
+      // Trigger out-animations
+      nameEl.classList.add('transition-wipe-out');
+      roleEl.classList.add('transition-wipe-out');
+      descEl.classList.add('transition-wipe-out');
+      imgEl.classList.add('portrait-wipe-out');
+
+      setTimeout(() => {
+        // Swap content values
+        nameEl.textContent = data.name;
+        roleEl.textContent = data.role;
+        descEl.textContent = `${data.name} serves as ${data.role} on the executive board, guiding school culture, student events, and leadership with confidence.`;
+        imgEl.src = `assets/${filename}`;
+        imgEl.alt = data.name;
+
+        // Trigger in-animations
+        nameEl.classList.remove('transition-wipe-out');
+        roleEl.classList.remove('transition-wipe-out');
+        descEl.classList.remove('transition-wipe-out');
+        imgEl.classList.remove('portrait-wipe-out');
+        
+        isTransitioning = false;
+      }, 400);
+    } else {
+      // Direct update on initial baseline page paint loops
+      nameEl.textContent = data.name;
+      roleEl.textContent = data.role;
+      descEl.textContent = `${data.name} serves as ${data.role} on the executive board, guiding school culture, student events, and leadership with confidence.`;
+      imgEl.src = `assets/${filename}`;
+      imgEl.alt = data.name;
+      isTransitioning = false;
+    }
+  }
+
+  /* ── Sync Navigation & Scroll Observer Elements ── */
+  const sectionIds = ['home', 'top-board', 'about', 'projects'];
+  const navLinks = document.querySelectorAll('.nav-pill a');
+  
+  const navObserverOptions = {
+    root: null,
+    rootMargin: '-30% 0px -60% 0px',
+    threshold: 0
+  };
+
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const activeId = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${activeId}`);
+        });
+      }
+    });
+  }, navObserverOptions);
+
+  sectionIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) navObserver.observe(el);
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+        navLinks.forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  });
+
+  function setupScrollAnimations() {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+      return;
+    }
+
+    const fadeObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+  }
+
+  /* ── Gallery Slideshow Loop ── */
+  const dots = document.querySelectorAll('.dot');
+  const galleryImages = document.querySelectorAll('.gallery-image');
+  let galleryIndex = 0;
+
+  function showGallerySlide(newIndex) {
+    if (!galleryImages.length) return;
+    galleryImages[galleryIndex].classList.remove('active');
+    dots[galleryIndex].classList.remove('active');
+    galleryIndex = newIndex;
+    if (galleryIndex < 0) galleryIndex = galleryImages.length - 1;
+    if (galleryIndex >= galleryImages.length) galleryIndex = 0;
+    galleryImages[galleryIndex].classList.add('active');
+    dots[galleryIndex].classList.add('active');
+  }
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      showGallerySlide(i);
+    });
+  });
+
+  if (galleryImages.length > 0) {
+    setInterval(() => {
+      showGallerySlide((galleryIndex + 1) % galleryImages.length);
+    }, 5000);
+  }
+</script>
+</body>
+</html>
