@@ -93,7 +93,7 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: url('assets/Background image.png') center / cover no-repeat;
+    background: url('Assets/Background image.png') center / cover no-repeat;
     height: 80%;
     background-size: cover;
     background-position: center;
@@ -222,7 +222,7 @@
   .board-bg {
     position: absolute;
     inset: 0;
-    background: url('assets/school-building.jpg') center / cover no-repeat;
+    background: url('Assets/school-building.jpg') center / cover no-repeat;
     opacity: 0.06;
     filter: saturate(0.2) blur(4px);
     z-index: 1;
@@ -510,7 +510,7 @@
   .about-bg {
     position: absolute;
     inset: 0;
-    background: url('assets/school-building.jpg') center / cover no-repeat;
+    background: url('Assets/school-building.jpg') center / cover no-repeat;
     opacity: 0.18;
     filter: saturate(0.4);
   }
@@ -940,7 +940,7 @@
 <body>
 
 <nav>
-  <img src="assets/New Logo Colour Transparent BG.png" alt="Prefects' Guild Logo" class="nav-logo" onerror="this.style.display='none'">
+  <img src="Assets/Logo Colour Transparent BG.png" alt="Prefects' Guild Logo" class="nav-logo" onerror="this.style.display='none'">
   <div class="nav-pill">
     <a href="#home" class="active">HOME</a>
     <a href="#top-board">TOP BOARD</a>
@@ -956,7 +956,7 @@
 
   <div class="hero-content">
     <div class="hero-brand fade-up">
-      <img src="assets/New Logo Colour Transparent BG.png" alt="Prefects' Guild Logo" class="hero-logo"
+      <img src="Assets/logo.png" alt="Prefects' Guild Logo" class="hero-logo"
            onerror="this.style.display='none'">
     </div>
 
@@ -1003,7 +1003,7 @@
       <!-- Right Column Content: Main Display Portrait Frame -->
       <div class="board-portrait-side">
         <div class="portrait-frame-wrapper">
-          <img src="assets/INDUVI DINETHMA.png" alt="Induvi Dinethma" class="portrait-main-img" id="boardMainImg" onerror="this.src='assets/placeholder.png'">
+          <img src="Assets/INDUVI DINETHMA.png" alt="Induvi Dinethma" class="portrait-main-img" id="boardMainImg" onerror="this.src='Assets/placeholder.png'">
         </div>
       </div>
 
@@ -1024,7 +1024,7 @@
 
   <div class="about-inner">
     <div class="about-card fade-up">
-      <img src="assets/New Logo Colour Transparent BG.png" alt="Logo" class="about-card-logo"
+      <img src="Assets/logo.png" alt="Logo" class="about-card-logo"
            onerror="this.style.display='none'">
 
       <div class="about-card-header">
@@ -1070,7 +1070,7 @@
     <div class="projects-grid fade-up">
       <article class="project-card">
         <div class="project-card-media">
-          <img src="assets/Background image.png" alt="Leadership Showcase project" loading="lazy">
+          <img src="Assets/Background image.png" alt="Leadership Showcase project" loading="lazy">
         </div>
         <div class="project-card-content">
           <h3>Leadership Showcase</h3>
@@ -1079,7 +1079,7 @@
       </article>
       <article class="project-card">
         <div class="project-card-media">
-          <img src="assets/school-building.jpg" alt="Community Impact project" loading="lazy">
+          <img src="Assets/school-building.jpg" alt="Community Impact project" loading="lazy">
         </div>
         <div class="project-card-content">
           <h3>Community Impact</h3>
@@ -1088,7 +1088,7 @@
       </article>
       <article class="project-card">
         <div class="project-card-media">
-          <img src="assets/239623594_1920590834790161_1604849225847124770_n.jpg" alt="Future Goals project" loading="lazy">
+          <img src="Assets/239623594_1920590834790161_1604849225847124770_n.jpg" alt="Future Goals project" loading="lazy">
         </div>
         <div class="project-card-content">
           <h3>Future Goals</h3>
@@ -1103,7 +1103,7 @@
 <footer class="site-footer fade-up">
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="assets/New Logo Colour Transparent BG.png" alt="Prefects' Guild Logo" class="footer-logo" onerror="this.style.display='none'">
+      <img src="Assets/logo.png" alt="Prefects' Guild Logo" class="footer-logo" onerror="this.style.display='none'">
       <div>
         <strong>Prefects' Guild</strong>
         <p>Leadership, service, and tradition united to support every student in our school community.</p>
@@ -1186,7 +1186,7 @@
 
       thumbCard.innerHTML = `
         <div class="thumb-img-wrapper">
-          <img src="assets/${filename}" alt="${prefect.name}" onerror="this.src='assets/placeholder.png'">
+          <img src="Assets/${filename}" alt="${prefect.name}" onerror="this.src='Assets/placeholder.png'">
         </div>
         <div class="thumb-name">${prefect.name}</div>
         <div class="thumb-role">${prefect.role}</div>
@@ -1252,7 +1252,7 @@
         nameEl.textContent = data.name;
         roleEl.textContent = data.role;
         descEl.textContent = `${data.name} serves as ${data.role} on the executive board, guiding school culture, student events, and leadership with confidence.`;
-        imgEl.src = `assets/${filename}`;
+        imgEl.src = `Assets/${filename}`;
         imgEl.alt = data.name;
 
         // Trigger in-animations
@@ -1268,7 +1268,7 @@
       nameEl.textContent = data.name;
       roleEl.textContent = data.role;
       descEl.textContent = `${data.name} serves as ${data.role} on the executive board, guiding school culture, student events, and leadership with confidence.`;
-      imgEl.src = `assets/${filename}`;
+      imgEl.src = `Assets/${filename}`;
       imgEl.alt = data.name;
       isTransitioning = false;
     }
