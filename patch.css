@@ -1,0 +1,134 @@
+/* ============================================================
+   Patch / glue styles — small additions on top of the ported
+   component CSS so it works without the original React/GSAP code.
+   ============================================================ */
+
+/* Mobile nav open state (base.css defines the closed/hidden state) */
+.nav-links.open{ transform:translateX(0) !important; }
+.nav-links{ z-index:600; }
+.mobile-menu-toggle{ z-index:601; position:relative; }
+
+/* Sponsor text-logos (no real sponsor artwork supplied yet) */
+.spn-logo-text{
+  font-family:'Cinzel', serif;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.06em;
+  text-align:center;
+  color:rgba(0,0,0,.45);
+  transition:color .3s ease, transform .3s ease;
+}
+.spn-card:hover .spn-logo-text{ color:#D4AF37; transform:scale(1.06); }
+.spn-mobile-item .spn-logo-text{
+  font-size:13px;
+  color:rgba(255,255,255,.55);
+}
+
+/* Simplify the desktop sponsors section: natural horizontal scroll
+   instead of a scroll-jacked pinned wrapper (no GSAP in this build) */
+.spn-section{ min-height:auto; padding:100px 0; }
+.spn-horizontal-wrapper{
+  min-height:auto;
+  overflow-x:auto;
+  scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+  scrollbar-color:#D4AF37 transparent;
+}
+.spn-panel{ min-height:auto; padding:80px 0; }
+.spn-cards-area{
+  height:auto;
+  grid-template-rows:repeat(3, auto);
+  padding:6vh 4vw;
+}
+
+/* Headliner card name font fallback already Cinzel via sed; keep spacing sane */
+.hl-name{ font-size:22px; }
+
+/* Gateway card glow follows pointer via --x/--y set in script.js;
+   sane default so it isn't dead-centre before first mousemove */
+.ag-card{ --x:50%; --y:50%; }
+.spn-card{ --x:50%; --y:50%; }
+
+/* Reward notification entrance */
+.cc-reward-notification{ animation:reward-in .4s ease; }
+@keyframes reward-in{ from{ transform:translateY(20px); opacity:0; } to{ transform:translateY(0); opacity:1; } }
+
+/* Pass modal visibility helper */
+.creator-modal-overlay.show{ display:flex !important; }
+
+/* Lotus animated background for hero and loader */
+.hero-lotus{
+  position:absolute;
+  width:420px;
+  height:420px;
+  background:url("assets/Lotus .png") no-repeat center center;
+  background-size:contain;
+  opacity:.18;
+  pointer-events:none;
+  animation:lotus-rotate 24s linear infinite;
+  mix-blend-mode:screen;
+  z-index:4;
+}
+
+@keyframes lotus-rotate{
+  0%{ transform:rotate(0deg) scale(1); }
+  50%{ transform:rotate(180deg) scale(1.02); }
+  100%{ transform:rotate(360deg) scale(1); }
+}
+
+/* Hero corner lotus, branding, and unique hero layout */
+.hero-container{ position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; }
+.hero-bg{ position:absolute; inset:0; background-image: linear-gradient(180deg, rgba(5,5,5,.25) 0%, rgba(5,5,5,.75) 48%, rgba(5,5,5,.95) 100%), url('assets/Background.jpg'), url('assets/lion-gate.jpg'); background-size: cover, cover, contain; background-position: center center, center center, bottom right; background-repeat: no-repeat, no-repeat, no-repeat; }
+.hero-lotus--tl{ top:18px; left:14px; }
+.hero-lotus--tr{ top:16px; right:14px; transform:scaleX(-1); }
+.hero-lotus--bl{ bottom:14px; left:12px; transform:scaleY(-1); }
+.hero-lotus--br{ bottom:12px; right:12px; transform:scale(-1); }
+.hero-branding{ position:relative; z-index:5; width:100%; display:flex; justify-content:center; align-items:center; padding:clamp(180px, 18vw, 260px) 0; }
+.hero-logo{ width:clamp(320px, 40vw, 620px); max-width:88%; height:auto; }
+
+@media(max-width:980px){
+  .hero-lotus{ width:260px; height:260px; }
+  .hero-lotus--tl{ top:16px; left:12px; }
+  .hero-lotus--tr{ top:16px; right:12px; }
+  .hero-lotus--bl{ bottom:10px; left:10px; }
+  .hero-lotus--br{ bottom:10px; right:10px; }
+  .hero-branding{ padding:clamp(120px, 16vw, 190px) 0; }
+  .hero-logo{ width:clamp(280px, 34vw, 520px); max-width:90%; }
+}
+
+@media(max-width:760px){
+  .hero-container{ min-height:72vh; }
+  .hero-bg{ background-position: center 12%, center 45%, bottom center; }
+  .hero-lotus{ width:210px; height:210px; opacity:.14; }
+  .hero-branding{ padding:clamp(100px, 20vw, 140px) 0; }
+  .hero-logo{ width:clamp(220px, 46vw, 320px); max-width:90%; }
+}
+
+/* Sponsor section theme update */
+.spn-section{ background:#090707; padding:100px 0; }
+.spn-title-text{ font-family:var(--f-head); font-size:clamp(3rem, 8vw, 6rem); color:var(--gold-light); letter-spacing:.16em; }
+.spn-card{ background:rgba(255,255,255,.04); border:1px solid rgba(212,175,55,.18); box-shadow:0 20px 55px rgba(0,0,0,.35); }
+.spn-card:hover{ filter:drop-shadow(0 0 30px rgba(212,175,55,.5)); }
+.spn-logo-text{ color:#fff; }
+.spn-mobile-title{ color:#fff; }
+.spn-mobile-item .spn-logo-text{ color:#fff; }
+
+/* Creator pass preview updates */
+.card-branding{ display:flex; gap:12px; align-items:center; }
+.card-logo-event img,
+.card-logo-org img{ width:50px; height:auto; display:block; }
+.card-photo{ position:relative; width:100%; height:160px; margin:20px 0; border-radius:18px; overflow:hidden; border:1px solid rgba(212,175,55,.2); background:#0a0a0a; display:flex; align-items:center; justify-content:center; }
+.card-photo img{ width:100%; height:100%; object-fit:cover; filter:brightness(.88); }
+.user-birthday{ font-family:var(--f-body); font-size:13px; color:rgba(245,245,245,.7); letter-spacing:.08em; margin-top:10px; }
+
+/* Footer branding */
+.footer-branding{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.footer-logo{ height:46px; width:auto; }
+.footer-logo--small{ height:34px; opacity:.85; }
+.footer-links a{ color:rgba(245,245,245,.72); }
+.footer-links a:hover{ color:var(--gold-light); }
+
+@media(max-width:760px){
+  .footer-branding{ justify-content:center; gap:12px; }
+}
