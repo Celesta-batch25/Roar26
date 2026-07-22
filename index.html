@@ -4,12 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coming Soon | ROAR — Annual Prefects' Day</title>
-<meta name="description" content="ROAR — the Annual Prefects' Day of Dharmapala Vidyalaya, Pannipitiya is coming soon.">
 <link rel="icon" href="assets/logo.png">
 <link rel="stylesheet" href="base.css">
-<!-- Removed gateway, headliners, sponsors, clicker, pass, and patch CSS files to keep it lightweight -->
 </head>
-<body>
+<body style="overflow: hidden;">
 
 <!-- ============ PRELOADER ============ -->
 <div id="preloader">
@@ -19,56 +17,33 @@
   <div class="pre-bar"><span></span></div>
 </div>
 
-<!-- ============ NAVBAR (Simplified) ============ -->
-<nav class="navbar" id="navbar">
-  <a class="navbar-logo" href="#">
-    <img src="assets/logoroar.png" alt="ROAR" class="logo-img">
-  </a>
-  <div class="navbar-right">
-    <a href="mailto:prefectsguild@dharmapalapannipitiya.lk"><button class="available-now-btn">CONTACT US</button></a>
-  </div>
-</nav>
-
 <!-- ============ HERO / COMING SOON ============ -->
-<header class="hero-container" id="hero">
+<header class="hero-container" id="hero" style="justify-content: center; text-align: center;">
+  <!-- Background relies on .hero-bg from base.css -->
   <div class="hero-bg"></div>
   <div class="hero-grid-overlay"></div>
   
-  <div class="wrap hero-content">
-    <div class="hero-branding reveal is-visible">
-      <img src="assets/logo.png" alt="ROAR event logo" class="hero-img" style="width: 120px; margin-bottom: 30px;">
-      
-      <div class="hero-eyebrow">A NEW GENERATION LEADS WITH PRIDE</div>
-      <h1 class="hero-title">COMING SOON</h1>
-      <p class="hero-desc">ROAR is the Annual Prefects' Day of Dharmapala Vidyalaya, Pannipitiya. A proud legacy. A golden lion's roar.</p>
-      
-      <!-- Utilizing the countdown CSS classes from base.css -->
-      <div class="hero-countdown-label">TIME UNTIL ROAR 2026</div>
-      <div class="hero-countdown">
-        <div class="hc-item"><b id="cd-days">00</b><span>Days</span></div>
-        <div class="hc-item"><b id="cd-hours">00</b><span>Hours</span></div>
-        <div class="hc-item"><b id="cd-mins">00</b><span>Mins</span></div>
-        <div class="hc-item"><b id="cd-secs">00</b><span>Secs</span></div>
-      </div>
-    </div>
+  <div class="wrap hero-content reveal is-visible" style="display: flex; flex-direction: column; align-items: center; margin: 0 auto; max-width: 100%;">
+    
+    <!-- Centered Logo -->
+    <img src="assets/logo.png" alt="ROAR event logo" style="width: 180px; max-width: 80vw; margin-bottom: 30px;">
+    
+    <!-- Centered Title -->
+    <h1 class="hero-title" style="text-align: center;">COMING SOON</h1>
+    
   </div>
 </header>
 
-<!-- ============ FOOTER (Simplified) ============ -->
-<footer class="footer" style="position: absolute; bottom: 0; width: 100%; border-top: none; background: transparent;">
-  <div class="footer-left">
-    <div class="footer-branding">
-      <span class="copyright">© 2026 PREFECTS' GUILD, DHARMAPALA VIDYALAYA PANNIPITIYA</span>
-    </div>
-  </div>
-  <div class="footer-right">
-    <div class="footer-social-icons">
-      <a href="#" class="footer-social-icon" aria-label="Facebook">f</a>
-      <a href="#" class="footer-social-icon" aria-label="Instagram">ig</a>
-    </div>
-  </div>
-</footer>
-
-<script src="script.js"></script>
+<!-- Fallback script to clear preloader if script.js relies on removed elements -->
+<script>
+  window.addEventListener('load', function() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+      setTimeout(() => { 
+        preloader.classList.add('hidden'); 
+      }, 500);
+    }
+  });
+</script>
 </body>
 </html>
