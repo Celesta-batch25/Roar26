@@ -3,11 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coming Soon | ROAR — Annual Prefects' Day</title>
+<title>ROAR — Annual Prefects' Day | Dharmapala Vidyalaya Pannipitiya</title>
+<meta name="description" content="ROAR — the Annual Prefects' Day of Dharmapala Vidyalaya, Pannipitiya. A celebration of leadership, discipline, unity and service by the Prefects' Guild.">
 <link rel="icon" href="assets/logo.png">
 <link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="gateway.css">
+<link rel="stylesheet" href="headliners.css">
+<link rel="stylesheet" href="sponsors.css">
+<link rel="stylesheet" href="clicker.css">
+<link rel="stylesheet" href="pass.css">
+<link rel="stylesheet" href="patch.css">
 </head>
-<body style="overflow: hidden;">
+<body>
 
 <!-- ============ PRELOADER ============ -->
 <div id="preloader">
@@ -17,33 +24,543 @@
   <div class="pre-bar"><span></span></div>
 </div>
 
-<!-- ============ HERO / COMING SOON ============ -->
-<header class="hero-container" id="hero" style="justify-content: center; text-align: center;">
-  <!-- Background relies on .hero-bg from base.css -->
+<!-- ============ NAVBAR ============ -->
+<nav class="navbar" id="navbar">
+  <a class="navbar-logo" href="#hero">
+    <img src="assets/logoroar.png" alt="ROAR" class="logo-img">
+  </a>
+  <button class="mobile-menu-toggle" aria-label="Toggle Menu" id="menuToggle">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#gateway">Gateway</a></li>
+    <li><a href="#council">Council</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
+    <li><a href="#roar-meter">ROAR Meter</a></li>
+    <li><a href="#pass">Guild Pass</a></li>
+    <li class="mobile-cyber-pass-link"><a href="register.html"><button class="available-now-btn">Register</button></a></li>
+  </ul>
+  <div class="navbar-right">
+    <a href="register.html"><button class="available-now-btn">Register</button></a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero-container" id="hero">
   <div class="hero-bg"></div>
+  <div class="hero-lotus hero-lotus--tl"></div>
+  <div class="hero-lotus hero-lotus--tr"></div>
+  <div class="hero-lotus hero-lotus--bl"></div>
+  <div class="hero-lotus hero-lotus--br"></div>
   <div class="hero-grid-overlay"></div>
-  
-  <div class="wrap hero-content reveal is-visible" style="display: flex; flex-direction: column; align-items: center; margin: 0 auto; max-width: 100%;">
-    
-    <!-- Centered Logo -->
-    <img src="assets/logo.png" alt="ROAR event logo" style="width: 180px; max-width: 80vw; margin-bottom: 30px;">
-    
-    <!-- Centered Title -->
-    <h1 class="hero-title" style="text-align: center;">COMING SOON</h1>
-    
+  <div class="wrap hero-content">
+    <div class="hero-branding reveal">
+      <img src="assets/logo.png" alt="ROAR event logo" class="hero-logo">
+    </div>
   </div>
 </header>
 
-<!-- Fallback script to clear preloader if script.js relies on removed elements -->
-<script>
-  window.addEventListener('load', function() {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-      setTimeout(() => { 
-        preloader.classList.add('hidden'); 
-      }, 500);
-    }
-  });
-</script>
+<!-- ============ ORDER / ABOUT NARRATIVE ============ -->
+<section class="order-section">
+  <div class="order-grid-overlay"></div>
+  <div class="wrap order-layout">
+    <div class="order-visual reveal">
+      <img src="assets/lion-gate.jpg" alt="Dharmapala Vidyalaya gate">
+    </div>
+    <div class="reveal">
+      <h2 class="order-title">A NEW GENERATION<span class="accent">LEADS WITH PRIDE</span></h2>
+      <div class="order-copy">
+        <p>Every year, a new circle of student leaders steps forward to carry the weight of a tradition older than most of them realise. Not through titles alone, but through quiet, everyday service — in the corridors, on the field, and in the moments no one is watching.</p><br>
+        <p>ROAR is the Annual Prefects' Day of Dharmapala Vidyalaya, Pannipitiya — organised entirely by the Prefects' Guild — where that service is finally seen, celebrated, and passed on. A proud legacy. A golden lion's roar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ APPLICATION GATEWAY ============ -->
+<section class="app-gateway-section" id="gateway">
+  <div class="ag-container">
+    <a class="ag-card idol reveal" href="mailto:prefectsguild@dharmapalapannipitiya.lk?subject=Prefects%27%20Guild%20Interest">
+      <div class="ag-overlay-glow"></div>
+      <div class="ag-card-bg"><img src="assets/lion-poster.jpg" alt="Serve as a Prefect"></div>
+      <div class="ag-card-content">
+        <span class="ag-eyebrow">Guild Arena</span>
+        <h3 class="ag-title">Serve as a Prefect</h3>
+        <p class="ag-desc">Step forward and carry the badge. We're looking for the next generation of student leaders to uphold the Guild's legacy.</p>
+        <div class="ag-btn"><span>INITIATE_APPLICATION</span><div class="ag-btn-line"></div>→</div>
+      </div>
+    </a>
+    <a class="ag-card competition reveal" href="register.html">
+      <div class="ag-overlay-glow"></div>
+      <div class="ag-card-bg"><img src="assets/lion-gate.jpg" alt="Attend ROAR"></div>
+      <div class="ag-card-content">
+        <span class="ag-eyebrow">Guest Gateway</span>
+        <h3 class="ag-title">Attend ROAR 2026</h3>
+        <p class="ag-desc">Reserve your seat at this year's ceremony. Students, staff, parents and old boys are all welcome to join the celebration.</p>
+        <div class="ag-btn"><span>INITIATE_REGISTRATION</span><div class="ag-btn-line"></div>→</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ============ HEADLINERS → GUILD COUNCIL ============ -->
+<section class="headliners-section" id="council">
+  <div class="headliners-container">
+    <div style="text-align:center;margin-bottom:60px;" class="reveal">
+      <h4 style="color:var(--gold-light);letter-spacing:4px;font-size:14px;margin-bottom:10px;font-family:var(--f-num);">GUEST OF HONOUR &amp; GUILD COUNCIL</h4>
+      <h2 style="color:#fff;font-size:48px;font-family:var(--f-head);margin-bottom:15px;">THE FACES OF ROAR 2026</h2>
+      <p style="color:rgba(255,255,255,.6);font-size:16px;">Distinguished guests and the student leaders who make it all happen.</p>
+    </div>
+
+    <div class="headliners-grid-wrapper">
+      <div class="headliners-grid desktop-grid mobile-carousel" id="hlGrid">
+
+        <div class="hl-slide">
+          <div class="hl-card-wrapper">
+            <div class="hl-card-inner">
+              <div style="width:100%;height:100%;">
+                <div class="hl-geometric-frame">
+                  <div class="hl-inner-content">
+                    <div class="hl-image-container">
+                      <img src="assets/DSC_0011 copy.png" alt="Chief Guest" class="hl-image">
+                      <div class="hl-gradient-1"></div>
+                      <div class="hl-gradient-2"></div>
+                      <div class="hl-hud">
+                        <div class="hl-hud-top">
+                          <div class="hl-gauge">
+                            <svg class="hl-gauge-svg"><circle cx="28" cy="28" r="24" class="hl-gauge-bg"></circle><circle cx="28" cy="28" r="24" class="hl-gauge-fg"></circle></svg>
+                            <div class="hl-gauge-text">TBA</div>
+                          </div>
+                          <div class="hl-top-right">
+                            <div class="hl-tr-1">Head Prefect</div>
+                            <div class="hl-tr-2">POSITION ID: ROAR-2026-CG</div>
+                          </div>
+                        </div>
+                        <div class="hl-side-left"><span class="hl-sl-text">GUEST // TYPE-A</span><div class="hl-sl-line"></div></div>
+                        <div class="hl-side-right"><span class="hl-sr-text">SECTOR: SRI LANKA</span><div class="hl-sr-line"></div></div>
+                        <div class="hl-bottom">
+                          <div class="hl-name-wrapper"><div class="hl-name-line"></div><h3 class="hl-name">Induvi Wijesinghe</h3></div>
+                          <div class="hl-bottom-info">
+                            <div class="hl-data-panel">
+                              <div class="hl-dp-active">Project Chairperson</div>
+                              <div></div>
+                              <div>AUTH: PREFECTS-GUILD</div>
+                            </div>
+                            <div class="hl-radar">
+                              <div class="hl-radar-border"></div>
+                              <svg viewBox="0 0 100 100" class="hl-radar-svg"><polygon points="50,10 90,50 70,90 30,90 10,50" fill="currentColor" fill-opacity=".2" stroke="currentColor" stroke-width="2"></polygon><circle cx="50" cy="50" r="2" fill="white"></circle></svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="hl-scanner-bar-container"><div class="hl-scanner-bar"></div></div>
+                    </div>
+                  </div>
+                  <div class="hl-texture"></div>
+                  <div class="hl-dec-top"></div>
+                  <div class="hl-dec-bot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hl-slide">
+          <div class="hl-card-wrapper">
+            <div class="hl-card-inner">
+              <div style="width:100%;height:100%;">
+                <div class="hl-geometric-frame">
+                  <div class="hl-inner-content">
+                    <div class="hl-image-container">
+                      <img src="assets/lion-gate.jpg" alt="Guest of Honour" class="hl-image">
+                      <div class="hl-gradient-1"></div>
+                      <div class="hl-gradient-2"></div>
+                      <div class="hl-hud">
+                        <div class="hl-hud-top">
+                          <div class="hl-gauge">
+                            <svg class="hl-gauge-svg"><circle cx="28" cy="28" r="24" class="hl-gauge-bg"></circle><circle cx="28" cy="28" r="24" class="hl-gauge-fg"></circle></svg>
+                            <div class="hl-gauge-text">TBA</div>
+                          </div>
+                          <div class="hl-top-right">
+                            <div class="hl-tr-1">GUEST OF HONOUR</div>
+                            <div class="hl-tr-2">POSITION ID: ROAR-2026-GH</div>
+                          </div>
+                        </div>
+                        <div class="hl-side-left"><span class="hl-sl-text">GUEST // TYPE-B</span><div class="hl-sl-line"></div></div>
+                        <div class="hl-side-right"><span class="hl-sr-text">SECTOR: SRI LANKA</span><div class="hl-sr-line"></div></div>
+                        <div class="hl-bottom">
+                          <div class="hl-name-wrapper"><div class="hl-name-line"></div><h3 class="hl-name">Guest of Honour</h3></div>
+                          <div class="hl-bottom-info">
+                            <div class="hl-data-panel">
+                              <div class="hl-dp-active">● ANNOUNCEMENT PENDING</div>
+                              <div>OLD BOYS' ASSOCIATION</div>
+                              <div>AUTH: PREFECTS-GUILD</div>
+                            </div>
+                            <div class="hl-radar">
+                              <div class="hl-radar-border"></div>
+                              <svg viewBox="0 0 100 100" class="hl-radar-svg"><polygon points="50,10 90,50 70,90 30,90 10,50" fill="currentColor" fill-opacity=".2" stroke="currentColor" stroke-width="2"></polygon><circle cx="50" cy="50" r="2" fill="white"></circle></svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="hl-scanner-bar-container"><div class="hl-scanner-bar"></div></div>
+                    </div>
+                  </div>
+                  <div class="hl-texture"></div>
+                  <div class="hl-dec-top"></div>
+                  <div class="hl-dec-bot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hl-slide">
+          <div class="hl-card-wrapper">
+            <div class="hl-card-inner">
+              <div style="width:100%;height:100%;">
+                <div class="hl-geometric-frame">
+                  <div class="hl-inner-content">
+                    <div class="hl-image-container">
+                      <img src="assets/logo.png" alt="Head Prefect" class="hl-image" style="object-fit:contain;padding:50px;background:#12070a;">
+                      <div class="hl-gradient-1"></div>
+                      <div class="hl-gradient-2"></div>
+                      <div class="hl-hud">
+                        <div class="hl-hud-top">
+                          <div class="hl-gauge">
+                            <svg class="hl-gauge-svg"><circle cx="28" cy="28" r="24" class="hl-gauge-bg"></circle><circle cx="28" cy="28" r="24" class="hl-gauge-fg"></circle></svg>
+                            <div class="hl-gauge-text">100%</div>
+                          </div>
+                          <div class="hl-top-right">
+                            <div class="hl-tr-1">HEAD PREFECT</div>
+                            <div class="hl-tr-2">POSITION ID: ROAR-2026-HP</div>
+                          </div>
+                        </div>
+                        <div class="hl-side-left"><span class="hl-sl-text">GUILD // CHAIR</span><div class="hl-sl-line"></div></div>
+                        <div class="hl-side-right"><span class="hl-sr-text">SECTOR: SRI LANKA</span><div class="hl-sr-line"></div></div>
+                        <div class="hl-bottom">
+                          <div class="hl-name-wrapper"><div class="hl-name-line"></div><h3 class="hl-name">Head Prefect</h3></div>
+                          <div class="hl-bottom-info">
+                            <div class="hl-data-panel">
+                              <div class="hl-dp-active">● ON DUTY</div>
+                              <div>GUILD CHAIRPERSON</div>
+                              <div>AUTH: PREFECTS-GUILD</div>
+                            </div>
+                            <div class="hl-radar">
+                              <div class="hl-radar-border"></div>
+                              <svg viewBox="0 0 100 100" class="hl-radar-svg"><polygon points="50,10 90,50 70,90 30,90 10,50" fill="currentColor" fill-opacity=".2" stroke="currentColor" stroke-width="2"></polygon><circle cx="50" cy="50" r="2" fill="white"></circle></svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="hl-scanner-bar-container"><div class="hl-scanner-bar"></div></div>
+                    </div>
+                  </div>
+                  <div class="hl-texture"></div>
+                  <div class="hl-dec-top"></div>
+                  <div class="hl-dec-bot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hl-slide">
+          <div class="hl-card-wrapper">
+            <div class="hl-card-inner">
+              <div style="width:100%;height:100%;">
+                <div class="hl-geometric-frame">
+                  <div class="hl-inner-content">
+                    <div class="hl-image-container">
+                      <img src="assets/logo.png" alt="Deputy Head Prefect" class="hl-image" style="object-fit:contain;padding:50px;background:#12070a;">
+                      <div class="hl-gradient-1"></div>
+                      <div class="hl-gradient-2"></div>
+                      <div class="hl-hud">
+                        <div class="hl-hud-top">
+                          <div class="hl-gauge">
+                            <svg class="hl-gauge-svg"><circle cx="28" cy="28" r="24" class="hl-gauge-bg"></circle><circle cx="28" cy="28" r="24" class="hl-gauge-fg"></circle></svg>
+                            <div class="hl-gauge-text">98%</div>
+                          </div>
+                          <div class="hl-top-right">
+                            <div class="hl-tr-1">DEPUTY HEAD PREFECT</div>
+                            <div class="hl-tr-2">POSITION ID: ROAR-2026-DHP</div>
+                          </div>
+                        </div>
+                        <div class="hl-side-left"><span class="hl-sl-text">GUILD // VICE</span><div class="hl-sl-line"></div></div>
+                        <div class="hl-side-right"><span class="hl-sr-text">SECTOR: SRI LANKA</span><div class="hl-sr-line"></div></div>
+                        <div class="hl-bottom">
+                          <div class="hl-name-wrapper"><div class="hl-name-line"></div><h3 class="hl-name">Deputy Head Prefect</h3></div>
+                          <div class="hl-bottom-info">
+                            <div class="hl-data-panel">
+                              <div class="hl-dp-active">● ON DUTY</div>
+                              <div>VICE CHAIRPERSON</div>
+                              <div>AUTH: PREFECTS-GUILD</div>
+                            </div>
+                            <div class="hl-radar">
+                              <div class="hl-radar-border"></div>
+                              <svg viewBox="0 0 100 100" class="hl-radar-svg"><polygon points="50,10 90,50 70,90 30,90 10,50" fill="currentColor" fill-opacity=".2" stroke="currentColor" stroke-width="2"></polygon><circle cx="50" cy="50" r="2" fill="white"></circle></svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="hl-scanner-bar-container"><div class="hl-scanner-bar"></div></div>
+                    </div>
+                  </div>
+                  <div class="hl-texture"></div>
+                  <div class="hl-dec-top"></div>
+                  <div class="hl-dec-bot"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="hl-mobile-indicators" id="hlIndicators">
+      <div class="hl-indicator active" data-i="0"></div>
+      <div class="hl-indicator" data-i="1"></div>
+      <div class="hl-indicator" data-i="2"></div>
+      <div class="hl-indicator" data-i="3"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPONSORS ============ -->
+<section class="spn-section" id="sponsors">
+  <div class="spn-horizontal-wrapper">
+    <div class="spn-panel">
+      <div class="spn-title-container">
+        <div class="spn-accent-bar"></div>
+        <div class="spn-title-text">SPONSORS</div>
+      </div>
+    </div>
+    <div class="spn-cards-area" style="--max-cols:3;">
+      <div class="spn-card"><span class="spn-logo-text">Gold Sponsor One</span></div>
+      <div class="spn-card"><span class="spn-logo-text">Gold Sponsor Two</span></div>
+      <div class="spn-card"><span class="spn-logo-text">Silver Partner</span></div>
+      <div class="spn-card"><span class="spn-logo-text">Silver Partner</span></div>
+      <div class="spn-card"><span class="spn-logo-text">Community Partner</span></div>
+      <div class="spn-card"><span class="spn-logo-text">Media Partner</span></div>
+      <div class="spn-card"><span class="spn-logo-text">Supporting Partner</span></div>
+      <div class="spn-card"><span class="spn-logo-text">Supporting Partner</span></div>
+      <div class="spn-card"><span class="spn-logo-text">Old Boys' Association</span></div>
+    </div>
+  </div>
+
+  <!-- Mobile creative version -->
+  <div class="spn-mobile-creative">
+    <div class="spn-mobile-header">
+      <div class="spn-mobile-accent"></div>
+      <h3 class="spn-mobile-title">SPONSORS</h3>
+    </div>
+    <div class="spn-mobile-lane spn-lane-right">
+      <div class="spn-mobile-track">
+        <div class="spn-mobile-item"><span class="spn-logo-text">Gold Sponsor One</span></div>
+        <div class="spn-mobile-item"><span class="spn-logo-text">Gold Sponsor Two</span></div>
+        <div class="spn-mobile-item"><span class="spn-logo-text">Silver Partner</span></div>
+        <div class="spn-mobile-item"><span class="spn-logo-text">Gold Sponsor One</span></div>
+        <div class="spn-mobile-item"><span class="spn-logo-text">Gold Sponsor Two</span></div>
+        <div class="spn-mobile-item"><span class="spn-logo-text">Silver Partner</span></div>
+      </div>
+    </div>
+    <div class="spn-mobile-lane spn-lane-left">
+      <div class="spn-mobile-track">
+        <div class="spn-mobile-item"><span class="spn-logo-text">Media Partner</span></div>
+        <div class="spn-mobile-item"><span class="spn-logo-text">Community Partner</span></div>
+        <div class="spn-mobile-item"><span class="spn-logo-text">Old Boys' Association</span></div>
+        <div class="spn-mobile-item"><span class="spn-logo-text">Media Partner</span></div>
+        <div class="spn-mobile-item"><span class="spn-logo-text">Community Partner</span></div>
+        <div class="spn-mobile-item"><span class="spn-logo-text">Old Boys' Association</span></div>
+      </div>
+    </div>
+    <div class="spn-mobile-footer"><span>ROAR // 2026</span><span>WITH THANKS</span></div>
+  </div>
+</section>
+
+<!-- ============ CYBER CLICKER → ROAR METER ============ -->
+<section class="cyber-clicker-section" id="roar-meter">
+  <div class="cc-container">
+    <div class="cc-left">
+      <div class="cc-visual-frame">
+        <div class="cc-depth-layer-1"></div>
+        <div class="cc-depth-layer-2"></div>
+        <div class="cc-image-wrapper">
+          <img src="assets/lion-gate.jpg" alt="ROAR meter visual" class="cc-main-img">
+          <div class="cc-shine-sweep"></div>
+          <div class="cc-image-overlay"></div>
+          <div class="cc-scanline"></div>
+        </div>
+        <div class="cc-visual-decorations">
+          <div class="corner tl"></div>
+          <div class="corner br"></div>
+        </div>
+        <div class="cc-pop-label">GOLDEN LIONS · EST. 1952</div>
+      </div>
+    </div>
+    <div class="cc-right">
+      <span class="cc-eyebrow">While You Wait</span>
+      <h2 class="cc-title">Charge the ROAR Meter</h2>
+      <p class="cc-subtitle">Every click adds to the Guild's collective pride. Help charge the meter to 100% and unlock an early-bird surprise before ROAR 2026.</p>
+
+      <div class="cc-game-container">
+        <div class="cc-progress-block">
+          <div class="cc-progress-circle-wrapper">
+            <svg class="cc-svg" viewBox="0 0 100 100">
+              <circle class="cc-circle-bg" cx="50" cy="50" r="45"></circle>
+              <circle class="cc-circle-fg" id="ccCircle" cx="50" cy="50" r="45" stroke-dashoffset="283"></circle>
+            </svg>
+            <div class="cc-progress-text">
+              <div class="cc-percent" id="ccPercent">0%</div>
+              <div class="cc-label">CHARGED</div>
+            </div>
+          </div>
+          <div class="cc-stats">
+            <div class="cc-stat-item">
+              <span class="stat-icon">🦁</span>
+              <div class="stat-info"><label>Total Roars</label><span id="ccTotal">0</span></div>
+            </div>
+            <div class="cc-stat-item">
+              <span class="stat-icon">⚡</span>
+              <div class="stat-info"><label>Guild Multiplier</label><span id="ccMult">×1</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="width:100%;max-width:280px;display:flex;flex-direction:column;gap:14px;">
+          <button class="cc-main-btn" id="ccBtn"><span class="btn-content">🦁 ROAR!</span></button>
+          <div class="cc-locked-status" id="ccLocked">
+            <span class="lock-icon">🔒</span>
+            <span>Reward locks at 100%</span>
+            <span class="lock-tag">KEEP CLICKING</span>
+          </div>
+          <div class="cc-info-footer">One click = +2% · Resets after unlock</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cc-reward-notification" id="ccReward" style="display:none;">
+    <div class="reward-content">
+      <span class="reward-icon">🏅</span>
+      <div class="reward-text"><label>METER CHARGED</label><span>Early-Bird Badge Unlocked!</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CREATOR PASS → ROAR GUILD PASS ============ -->
+<section class="creator-section" id="pass">
+  <div class="creator-bg-grid"></div>
+  <div class="creator-frame reveal">
+    <div class="creator-content">
+      <div class="pass-card-container">
+        <div class="pass-card" id="passCardPreview">
+          <div class="card-scanner"></div>
+          <div class="card-inner">
+            <div class="card-header">
+              <div class="card-branding">
+                <div class="card-logo card-logo-event"><img src="assets/logoroar.png" alt="ROAR"></div>
+                <div class="card-logo card-logo-org"><img src="assets/logo.png" alt="Prefects' Guild"></div>
+              </div>
+              <div class="card-chip"></div>
+            </div>
+            <div class="card-photo" id="passPhotoPreview">
+              <img src="assets/logo.png" alt="Guest photo preview" id="passPhotoImg">
+            </div>
+            <div class="card-user">
+              <div class="user-id" id="passRole">GUEST // ROAR-2026</div>
+              <div class="user-name" id="passName">YOUR NAME</div>
+              <div class="user-birthday" id="passBirthday">BIRTHDATE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="creator-info">
+        <div class="creator-status-badge">
+          <span class="status-dot"></span>
+          <span class="status-text">PASSES AVAILABLE NOW</span>
+        </div>
+        <div class="creator-title-wrap">
+          <span class="creator-title-main">YOUR ROAR</span>
+          <span class="creator-title-accent">GUILD PASS</span>
+        </div>
+        <p class="creator-description">Generate your own digital ROAR pass — a shareable ID card that marks you as part of this year's celebration. Save it, share it, flex it.</p>
+        <div class="creator-benefits">
+          <div class="benefit-item"><span class="benefit-icon">✓</span> Priority Entry Lane</div>
+          <div class="benefit-item"><span class="benefit-icon">✓</span> Reserved Seating</div>
+          <div class="benefit-item"><span class="benefit-icon">✓</span> Digital Guild Badge</div>
+          <div class="benefit-item"><span class="benefit-icon">✓</span> Exclusive Guild Merch</div>
+        </div>
+        <div class="creator-cta-wrap">
+          <button class="pass-button" id="openPassModal">Generate My Pass</button>
+          <a href="register.html"><button class="secondary-button">Register for ROAR</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pass generator modal -->
+<div class="creator-modal-overlay" id="passModal" style="display:none;">
+  <div class="creator-modal-backdrop" id="passModalBackdrop"></div>
+  <div class="creator-modal-container">
+    <div class="modal-header">
+      <div class="modal-title"><span class="title-icon">🦁</span> Generate ROAR Pass</div>
+      <button class="modal-close" id="passModalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <form class="creator-form" id="passForm">
+        <div class="form-grid">
+          <div class="input-group">
+            <label>Full Name</label>
+            <input type="text" id="passInputName" placeholder="e.g. Kasun Perera" required>
+          </div>
+          <div class="input-group">
+            <label>Attending As</label>
+            <select id="passInputRole">
+              <option value="PREFECT">Prefect</option>
+              <option value="STUDENT">Invited Schools</option>
+              <option value="PARENT">Teachers</option>
+              <option value="OLD BOY">Old Palians Prefect</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Birthday</label>
+            <input type="date" id="passInputBirthday" required>
+          </div>
+          <div class="input-group">
+            <label>Photo URL</label>
+            <input type="url" id="passInputPhoto" placeholder="Paste image URL here">
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Generate Pass</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-left">
+    <div class="footer-branding">
+      <img src="assets/logoroar.png" alt="ROAR logo" class="footer-logo">
+      <img src="assets/logo.png" alt="Prefects' Guild logo" class="footer-logo footer-logo--small">
+      <span class="copyright">© 2026 PREFECTS' GUILD, DHARMAPALA VIDYALAYA PANNIPITIYA</span>
+    </div>
+  </div>
+  <div class="footer-center">
+    <ul class="footer-links">
+      <li><a href="register.html">Register</a></li>
+      <li><a href="#council">Council</a></li>
+      <li><a href="mailto:prefectsguild@dharmapalapannipitiya.lk">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-right">
+    <div class="footer-social-icons">
+      <a href="#" class="footer-social-icon" aria-label="Facebook">f</a>
+      <a href="#" class="footer-social-icon" aria-label="Instagram">ig</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
