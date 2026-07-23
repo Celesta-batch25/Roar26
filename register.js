@@ -5,7 +5,7 @@
       (Deploy > New deployment > Web app > Execute as: Me,
       Who has access: Anyone). See Code.gs for the backend.
    ========================================================= */
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzeljzznNXIlxMI5Hdi6LzSVaUaVxQXibvh9IMzwQC2lMZIWrw-KSK2J9NQDfsCzvRl/exec";
+const APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
 
 document.addEventListener('DOMContentLoaded', () => {
 

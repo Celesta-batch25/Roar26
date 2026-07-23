@@ -57,29 +57,43 @@
 /* Pass modal visibility helper */
 .creator-modal-overlay.show{ display:flex !important; }
 
-/* Lotus animated background for hero and loader */
+/* Lotus-style ambient ornament for hero and loader (CSS-only, no image asset needed) */
 .hero-lotus{
   position:absolute;
   width:420px;
   height:420px;
-  background:url("assets/Lotus .png") no-repeat center center;
-  background-size:contain;
-  opacity:.18;
   pointer-events:none;
-  animation:lotus-rotate 24s linear infinite;
-  mix-blend-mode:screen;
   z-index:4;
+}
+.hero-lotus::before{
+  content:'';
+  position:absolute; inset:0;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(212,175,55,.16) 0%, transparent 70%);
+  filter:blur(6px);
+  animation:lotus-pulse 6s ease-in-out infinite;
+}
+.hero-lotus::after{
+  content:'';
+  position:absolute; inset:40px;
+  border:1px dashed rgba(212,175,55,.25);
+  border-radius:50%;
+  animation:lotus-rotate 24s linear infinite;
 }
 
 @keyframes lotus-rotate{
   0%{ transform:rotate(0deg) scale(1); }
-  50%{ transform:rotate(180deg) scale(1.02); }
+  50%{ transform:rotate(180deg) scale(1.03); }
   100%{ transform:rotate(360deg) scale(1); }
+}
+@keyframes lotus-pulse{
+  0%,100%{ opacity:.6; transform:scale(1); }
+  50%{ opacity:1; transform:scale(1.08); }
 }
 
 /* Hero corner lotus, branding, and unique hero layout */
 .hero-container{ position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; }
-.hero-bg{ position:absolute; inset:0; background-image: linear-gradient(180deg, rgba(5,5,5,.25) 0%, rgba(5,5,5,.75) 48%, rgba(5,5,5,.95) 100%), url('assets/Background.jpg'), url('assets/lion-gate.jpg'); background-size: cover, cover, contain; background-position: center center, center center, bottom right; background-repeat: no-repeat, no-repeat, no-repeat; }
+.hero-bg{ position:absolute; inset:0; background-image: linear-gradient(180deg, rgba(5,5,5,.25) 0%, rgba(5,5,5,.8) 55%, rgba(5,5,5,.97) 100%), url('assets/lion-gate.jpg'); background-size: cover; background-position: center 25%; background-repeat: no-repeat; }
 .hero-lotus--tl{ top:18px; left:14px; }
 .hero-lotus--tr{ top:16px; right:14px; transform:scaleX(-1); }
 .hero-lotus--bl{ bottom:14px; left:12px; transform:scaleY(-1); }
@@ -99,7 +113,7 @@
 
 @media(max-width:760px){
   .hero-container{ min-height:72vh; }
-  .hero-bg{ background-position: center 12%, center 45%, bottom center; }
+  .hero-bg{ background-position: center 20%, center 20%; }
   .hero-lotus{ width:210px; height:210px; opacity:.14; }
   .hero-branding{ padding:clamp(100px, 20vw, 140px) 0; }
   .hero-logo{ width:clamp(220px, 46vw, 320px); max-width:90%; }
@@ -118,17 +132,129 @@
 .card-branding{ display:flex; gap:12px; align-items:center; }
 .card-logo-event img,
 .card-logo-org img{ width:50px; height:auto; display:block; }
-.card-photo{ position:relative; width:100%; height:160px; margin:20px 0; border-radius:18px; overflow:hidden; border:1px solid rgba(212,175,55,.2); background:#0a0a0a; display:flex; align-items:center; justify-content:center; }
-.card-photo img{ width:100%; height:100%; object-fit:cover; filter:brightness(.88); }
+.card-photo{
+  position:relative; width:120px; height:120px; margin:20px auto; border-radius:50%;
+  overflow:hidden; border:2px solid var(--gold); box-shadow:0 0 25px rgba(212,175,55,.3);
+  background:#0a0a0a; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.card-photo img{ width:100%; height:100%; object-fit:cover; filter:brightness(.92); }
 .user-birthday{ font-family:var(--f-body); font-size:13px; color:rgba(245,245,245,.7); letter-spacing:.08em; margin-top:10px; }
+
+/* Photo upload field inside the pass modal */
+.photo-upload-row{ display:flex; align-items:center; gap:16px; }
+.photo-upload-preview{
+  width:64px; height:64px; border-radius:50%; overflow:hidden; flex-shrink:0;
+  border:2px solid var(--gold); background:#0a0a0a; display:flex; align-items:center; justify-content:center;
+}
+.photo-upload-preview img{ width:100%; height:100%; object-fit:cover; display:none; }
+.photo-upload-preview .ph-placeholder{ font-size:22px; color:var(--gold-light); opacity:.6; }
+.photo-upload-btn{
+  flex:1; position:relative; display:flex; align-items:center; justify-content:center;
+  padding:14px 16px; border:1px dashed rgba(212,175,55,.4); border-radius:10px;
+  color:rgba(245,245,245,.7); font-size:13px; cursor:pointer; transition:.3s;
+}
+.photo-upload-btn:hover{ border-color:var(--gold); background:rgba(212,175,55,.06); color:var(--gold-light); }
+.photo-upload-btn input[type=file]{ position:absolute; inset:0; opacity:0; cursor:pointer; }
 
 /* Footer branding */
 .footer-branding{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
 .footer-logo{ height:46px; width:auto; }
 .footer-logo--small{ height:34px; opacity:.85; }
+.footer-brand-text{ display:flex; flex-direction:column; gap:4px; }
+.footer-brand-title{ font-family:var(--f-head); font-size:18px; letter-spacing:.1em; color:var(--gold-light); }
 .footer-links a{ color:rgba(245,245,245,.72); }
 .footer-links a:hover{ color:var(--gold-light); }
 
+/* Pass card event logotype (text-based, since no separate event image asset exists) */
+.card-logo-event{ font-family:var(--f-head) !important; letter-spacing:.12em; color:var(--gold-light) !important; }
+
 @media(max-width:760px){
   .footer-branding{ justify-content:center; gap:12px; }
+}
+
+/* ============================================================
+   Rules & Regulations
+   ============================================================ */
+.rules-section{
+  padding:110px 0; background:#000; position:relative; overflow:hidden; z-index:15;
+}
+.rules-grid-overlay{
+  position:absolute; inset:0;
+  background-image:linear-gradient(rgba(212,175,55,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,.04) 1px, transparent 1px);
+  background-size:60px 60px;
+}
+.rules-header{ position:relative; z-index:2; text-align:center; margin-bottom:60px; }
+.rules-eyebrow{ font-family:var(--f-num); letter-spacing:.4em; font-size:13px; color:var(--gold); text-transform:uppercase; margin-bottom:14px; }
+.rules-title{ font-family:var(--f-head); font-size:clamp(30px,4.5vw,48px); color:#fff; margin-bottom:14px; }
+.rules-lede{ color:rgba(245,245,245,.62); max-width:560px; margin:0 auto; font-size:15px; }
+.rules-grid{
+  position:relative; z-index:2; display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+  max-width:1400px; margin:0 auto; padding:0 5vw;
+}
+.rule-card{
+  background:rgba(255,255,255,.04); border:1px solid rgba(212,175,55,.2); border-radius:4px;
+  padding:30px 26px; position:relative; transition:.3s;
+}
+.rule-card:hover{ border-color:var(--gold); background:rgba(212,175,55,.05); transform:translateY(-4px); }
+.rule-num{ font-family:var(--f-num); font-size:38px; color:var(--gold); opacity:.55; display:block; margin-bottom:10px; }
+.rule-card h4{ font-family:var(--f-head); font-size:16px; color:#fff; margin-bottom:8px; }
+.rule-card p{ font-size:13.5px; color:rgba(245,245,245,.62); line-height:1.6; margin:0; }
+@media (max-width:1024px){ .rules-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:600px){ .rules-grid{ grid-template-columns:1fr; } }
+
+/* ============================================================
+   ROAR Meter — 100% popup celebration
+   ============================================================ */
+.meter-popup-overlay{
+  position:fixed; inset:0; z-index:9998; display:none; align-items:center; justify-content:center;
+  padding:20px;
+}
+.meter-popup-overlay.show{ display:flex; }
+.meter-popup-backdrop{
+  position:absolute; inset:0; background:rgba(0,0,0,.8); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+  animation:mp-fade .3s ease;
+}
+.meter-popup-card{
+  position:relative; z-index:2; width:100%; max-width:420px; text-align:center;
+  background:linear-gradient(160deg,#1a1005,#0a0a0a); border:1px solid var(--gold);
+  border-radius:16px; padding:50px 36px 40px; box-shadow:0 0 80px rgba(212,175,55,.35);
+  animation:mp-pop .5s cubic-bezier(.2,1.4,.4,1);
+  overflow:hidden;
+}
+.meter-popup-rings{ position:absolute; inset:0; pointer-events:none; }
+.meter-popup-rings span{
+  position:absolute; top:50%; left:50%; width:20px; height:20px; margin:-10px;
+  border:1px solid rgba(212,175,55,.5); border-radius:50%;
+  animation:mp-ring 1.8s ease-out infinite;
+}
+.meter-popup-rings span:nth-child(2){ animation-delay:.4s; }
+.meter-popup-rings span:nth-child(3){ animation-delay:.8s; }
+.meter-popup-badge{ font-size:54px; display:block; margin-bottom:18px; animation:mp-badge-bounce 1s ease .2s 1; }
+.meter-popup-card h3{ font-family:var(--f-head); font-size:26px; color:#fff; margin-bottom:10px; }
+.meter-popup-card p{ color:rgba(245,245,245,.68); font-size:14.5px; margin-bottom:28px; }
+.meter-popup-close{
+  display:inline-flex; padding:14px 34px; border-radius:999px; border:none; cursor:pointer;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold)); color:#150c04;
+  font-family:var(--f-num); letter-spacing:.12em; font-size:14px; text-transform:uppercase; font-weight:700;
+}
+.meter-popup-confetti{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.meter-popup-confetti i{
+  position:absolute; top:-10%; width:8px; height:14px; opacity:.9;
+  background:var(--gold-light); animation:mp-confetti-fall 2.4s ease-in forwards;
+}
+
+@keyframes mp-fade{ from{ opacity:0; } to{ opacity:1; } }
+@keyframes mp-pop{ 0%{ transform:scale(.7); opacity:0; } 100%{ transform:scale(1); opacity:1; } }
+@keyframes mp-badge-bounce{
+  0%{ transform:scale(0) rotate(-20deg); }
+  60%{ transform:scale(1.25) rotate(8deg); }
+  100%{ transform:scale(1) rotate(0deg); }
+}
+@keyframes mp-ring{
+  0%{ width:20px; height:20px; margin:-10px; opacity:1; }
+  100%{ width:320px; height:320px; margin:-160px; opacity:0; }
+}
+@keyframes mp-confetti-fall{
+  0%{ transform:translateY(0) rotate(0deg); opacity:1; }
+  100%{ transform:translateY(420px) rotate(540deg); opacity:0; }
 }

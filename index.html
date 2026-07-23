@@ -19,7 +19,15 @@
 <!-- ============ PRELOADER ============ -->
 <div id="preloader">
   <div class="pre-emblem">
-    <img src="assets/Lotus .png" alt="ROAR" class="pre-logo">
+    <svg viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="46" stroke="#D4AF37" stroke-width="1"/>
+      <circle cx="50" cy="50" r="34" stroke="#D4AF37" stroke-width="1" stroke-dasharray="4 4"/>
+      <circle cx="50" cy="50" r="20" stroke="#F5D76E" stroke-width="1.4"/>
+      <circle cx="50" cy="16" r="4" fill="#D4AF37"/>
+      <circle cx="84" cy="50" r="4" fill="#D4AF37"/>
+      <circle cx="50" cy="84" r="4" fill="#D4AF37"/>
+      <circle cx="16" cy="50" r="4" fill="#D4AF37"/>
+    </svg>
   </div>
   <div class="pre-bar"><span></span></div>
 </div>
@@ -27,7 +35,8 @@
 <!-- ============ NAVBAR ============ -->
 <nav class="navbar" id="navbar">
   <a class="navbar-logo" href="#hero">
-    <img src="assets/logoroar.png" alt="ROAR" class="logo-img">
+    <img src="assets/logo.png" alt="ROAR crest" class="logo-img">
+    <span>ROAR</span>
   </a>
   <button class="mobile-menu-toggle" aria-label="Toggle Menu" id="menuToggle">☰</button>
   <ul class="nav-links" id="navLinks">
@@ -35,6 +44,7 @@
     <li><a href="#gateway">Gateway</a></li>
     <li><a href="#council">Council</a></li>
     <li><a href="#sponsors">Sponsors</a></li>
+    <li><a href="#rules">Rules</a></li>
     <li><a href="#roar-meter">ROAR Meter</a></li>
     <li><a href="#pass">Guild Pass</a></li>
     <li class="mobile-cyber-pass-link"><a href="register.html"><button class="available-now-btn">Register</button></a></li>
@@ -47,6 +57,10 @@
 <!-- ============ HERO ============ -->
 <header class="hero-container" id="hero">
   <div class="hero-bg"></div>
+  <div class="hero-lotus hero-lotus--tl"></div>
+  <div class="hero-lotus hero-lotus--tr"></div>
+  <div class="hero-lotus hero-lotus--bl"></div>
+  <div class="hero-lotus hero-lotus--br"></div>
   <div class="hero-grid-overlay"></div>
   <div class="wrap hero-content">
     <div class="hero-branding reveal">
@@ -117,7 +131,7 @@
                 <div class="hl-geometric-frame">
                   <div class="hl-inner-content">
                     <div class="hl-image-container">
-                      <img src="assets/DSC_0011 copy.png" alt="Chief Guest" class="hl-image">
+                      <img src="assets/lion-poster.jpg" alt="Chief Guest" class="hl-image">
                       <div class="hl-gradient-1"></div>
                       <div class="hl-gradient-2"></div>
                       <div class="hl-hud">
@@ -373,6 +387,58 @@
   </div>
 </section>
 
+<!-- ============ RULES & REGULATIONS ============ -->
+<section class="rules-section" id="rules">
+  <div class="rules-grid-overlay"></div>
+  <div class="rules-header reveal">
+    <div class="rules-eyebrow">Guild Protocol</div>
+    <h2 class="rules-title">Rules &amp; Regulations</h2>
+    <p class="rules-lede">A few essentials every guest should know before stepping through the gates on the day.</p>
+  </div>
+  <div class="rules-grid">
+    <div class="rule-card reveal">
+      <span class="rule-num">01</span>
+      <h4>Registration Required</h4>
+      <p>Every attendee — including current prefects — must complete online registration to receive an entry pass.</p>
+    </div>
+    <div class="rule-card reveal">
+      <span class="rule-num">02</span>
+      <h4>QR Entry Only</h4>
+      <p>Entry is granted only on presentation of your QR confirmation, digital or printed, at the gate.</p>
+    </div>
+    <div class="rule-card reveal">
+      <span class="rule-num">03</span>
+      <h4>Formal Attire</h4>
+      <p>Formal dress is expected. Prefects must wear the official Guild uniform unless notified otherwise.</p>
+    </div>
+    <div class="rule-card reveal">
+      <span class="rule-num">04</span>
+      <h4>Arrival Time</h4>
+      <p>Please arrive by 4:00 PM. Seating is not guaranteed for guests arriving after the ceremony begins.</p>
+    </div>
+    <div class="rule-card reveal">
+      <span class="rule-num">05</span>
+      <h4>Respect the Guild</h4>
+      <p>Follow the instructions of Guild officials and event marshals throughout the evening.</p>
+    </div>
+    <div class="rule-card reveal">
+      <span class="rule-num">06</span>
+      <h4>Photography Consent</h4>
+      <p>The event will be photographed and filmed. Attending implies consent to appear in official ROAR media.</p>
+    </div>
+    <div class="rule-card reveal">
+      <span class="rule-num">07</span>
+      <h4>No Outside Items</h4>
+      <p>Outside food, banners, or decorations are not permitted on the premises without prior Guild approval.</p>
+    </div>
+    <div class="rule-card reveal">
+      <span class="rule-num">08</span>
+      <h4>Schedule Changes</h4>
+      <p>The organizing committee reserves the right to amend the programme or venue where necessary.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ============ CYBER CLICKER → ROAR METER ============ -->
 <section class="cyber-clicker-section" id="roar-meter">
   <div class="cc-container">
@@ -442,6 +508,19 @@
   </div>
 </section>
 
+<!-- ROAR Meter 100% celebration popup -->
+<div class="meter-popup-overlay" id="meterPopup">
+  <div class="meter-popup-backdrop" id="meterPopupBackdrop"></div>
+  <div class="meter-popup-card">
+    <div class="meter-popup-rings"><span></span><span></span><span></span></div>
+    <div class="meter-popup-confetti" id="meterConfetti"></div>
+    <span class="meter-popup-badge">🏅</span>
+    <h3>Meter Fully Charged!</h3>
+    <p>The Guild's pride has reached 100%. You've unlocked the ROAR Early-Bird Badge — show this at the ROAR desk on the day.</p>
+    <button class="meter-popup-close" id="meterPopupClose">Roar On</button>
+  </div>
+</div>
+
 <!-- ============ CREATOR PASS → ROAR GUILD PASS ============ -->
 <section class="creator-section" id="pass">
   <div class="creator-bg-grid"></div>
@@ -453,7 +532,7 @@
           <div class="card-inner">
             <div class="card-header">
               <div class="card-branding">
-                <div class="card-logo card-logo-event"><img src="assets/logoroar.png" alt="ROAR"></div>
+                <div class="card-logo card-logo-event">ROAR</div>
                 <div class="card-logo card-logo-org"><img src="assets/logo.png" alt="Prefects' Guild"></div>
               </div>
               <div class="card-chip"></div>
@@ -523,8 +602,17 @@
             <input type="date" id="passInputBirthday" required>
           </div>
           <div class="input-group">
-            <label>Photo URL</label>
-            <input type="url" id="passInputPhoto" placeholder="Paste image URL here">
+            <label>Photo</label>
+            <div class="photo-upload-row">
+              <div class="photo-upload-preview" id="photoUploadPreview">
+                <span class="ph-placeholder">🦁</span>
+                <img id="photoUploadPreviewImg" alt="Photo preview">
+              </div>
+              <label class="photo-upload-btn">
+                <span id="photoUploadLabel">Upload Photo</span>
+                <input type="file" id="passInputPhoto" accept="image/*">
+              </label>
+            </div>
           </div>
         </div>
         <button type="submit" class="submit-btn">Generate Pass</button>
@@ -537,9 +625,11 @@
 <footer class="footer">
   <div class="footer-left">
     <div class="footer-branding">
-      <img src="assets/logoroar.png" alt="ROAR logo" class="footer-logo">
-      <img src="assets/logo.png" alt="Prefects' Guild logo" class="footer-logo footer-logo--small">
-      <span class="copyright">© 2026 PREFECTS' GUILD, DHARMAPALA VIDYALAYA PANNIPITIYA</span>
+      <img src="assets/logo.png" alt="Prefects' Guild crest" class="footer-logo">
+      <div class="footer-brand-text">
+        <span class="footer-brand-title">ROAR</span>
+        <span class="copyright">© 2026 PREFECTS' GUILD, DHARMAPALA VIDYALAYA PANNIPITIYA</span>
+      </div>
     </div>
   </div>
   <div class="footer-center">

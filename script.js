@@ -105,8 +105,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const ccPercent = document.getElementById('ccPercent');
   const ccTotal = document.getElementById('ccTotal');
   const ccMult = document.getElementById('ccMult');
-  const ccReward = document.getElementById('ccReward');
   const ccLocked = document.getElementById('ccLocked');
+  const meterPopup = document.getElementById('meterPopup');
+  const meterPopupClose = document.getElementById('meterPopupClose');
+  const meterPopupBackdrop = document.getElementById('meterPopupBackdrop');
+  const meterConfetti = document.getElementById('meterConfetti');
+
+  const spawnConfetti = () => {
+    if(!meterConfetti) return;
+    meterConfetti.innerHTML = '';
+    const colors = ['#D4AF37', '#F5D76E', '#fff', '#5C0A1D'];
+    for(let i = 0; i < 28; i++){
+      const bit = document.createElement('i');
+      bit.style.left = Math.random() * 100 + '%';
+      bit.style.background = colors[Math.floor(Math.random() * colors.length)];
+      bit.style.animationDelay = (Math.random() * 0.5) + 's';
+      bit.style.animationDuration = (1.8 + Math.random() * 1.2) + 's';
+      bit.style.transform = `rotate(${Math.random() * 360}deg)`;
+      meterConfetti.appendChild(bit);
+    }
+  };
+
+  const openMeterPopup = () => {
+    if(!meterPopup) return;
+    spawnConfetti();
+    meterPopup.classList.add('show');
+  };
+  const closeMeterPopup = () => { if(meterPopup) meterPopup.classList.remove('show'); };
+  if(meterPopupClose) meterPopupClose.addEventListener('click', closeMeterPopup);
+  if(meterPopupBackdrop) meterPopupBackdrop.addEventListener('click', closeMeterPopup);
 
   if(ccBtn && ccCircle){
     const CIRCUMFERENCE = 283; // 2 * PI * 45, matches r=45 in the SVG
@@ -133,10 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ccLocked.querySelector('span:nth-child(2)').textContent = 'Reward Unlocked!';
           ccLocked.querySelector('.lock-tag').textContent = 'SHOW THIS AT THE ROAR DESK';
         }
-        if(ccReward){
-          ccReward.style.display = 'block';
-          setTimeout(() => { ccReward.style.display = 'none'; }, 5000);
-        }
+        openMeterPopup();
         setTimeout(() => {
           charge = 0; unlocked = false;
           ccCircle.style.strokeDashoffset = CIRCUMFERENCE;
@@ -165,6 +189,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const passRoleDisplay = document.getElementById('passRole');
   const passBirthdayDisplay = document.getElementById('passBirthday');
   const passPhotoImg = document.getElementById('passPhotoImg');
+  const photoUploadPreview = document.getElementById('photoUploadPreview');
+  const photoUploadPreviewImg = document.getElementById('photoUploadPreviewImg');
+  const photoUploadLabel = document.getElementById('photoUploadLabel');
+
+  let uploadedPhotoDataUrl = '';
 
   const openModal = () => { if(modal){ modal.style.display = 'flex'; modal.classList.add('show'); } };
   const closeModal = () => { if(modal){ modal.style.display = 'none'; modal.classList.remove('show'); } };
@@ -173,19 +202,39 @@ document.addEventListener('DOMContentLoaded', () => {
   if(closeBtn) closeBtn.addEventListener('click', closeModal);
   if(backdrop) backdrop.addEventListener('click', closeModal);
 
+  if(passPhotoInput){
+    passPhotoInput.addEventListener('change', () => {
+      const file = passPhotoInput.files && passPhotoInput.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        uploadedPhotoDataUrl = ev.target.result;
+        if(photoUploadPreviewImg){
+          photoUploadPreviewImg.src = uploadedPhotoDataUrl;
+          photoUploadPreviewImg.style.display = 'block';
+        }
+        const placeholder = photoUploadPreview && photoUploadPreview.querySelector('.ph-placeholder');
+        if(placeholder) placeholder.style.display = 'none';
+        if(photoUploadLabel) photoUploadLabel.textContent = file.name.length > 22 ? file.name.slice(0, 19) + '…' : file.name;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
   if(passForm){
     passForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = (passNameInput.value || 'GUEST').trim().toUpperCase();
       const role = passRoleInput.value;
       const birthday = passBirthdayInput.value ? new Date(passBirthdayInput.value).toLocaleDateString('en-GB') : 'DATE NOT SET';
-      const photoUrl = passPhotoInput.value.trim();
 
       if(passNameDisplay) passNameDisplay.textContent = name;
       if(passRoleDisplay) passRoleDisplay.textContent = role + ' // ROAR-2026';
       if(passBirthdayDisplay) passBirthdayDisplay.textContent = birthday;
-      if(passPhotoImg) passPhotoImg.src = photoUrl || 'assets/logo.png';
-      if(passPhotoImg) passPhotoImg.alt = photoUrl ? `${name} photo` : 'ROAR placeholder image';
+      if(passPhotoImg){
+        passPhotoImg.src = uploadedPhotoDataUrl || 'assets/logo.png';
+        passPhotoImg.alt = uploadedPhotoDataUrl ? `${name} photo` : 'ROAR placeholder image';
+      }
 
       closeModal();
       const card = document.getElementById('passCardPreview');
