@@ -123,7 +123,7 @@ button{ font-family:inherit; cursor:pointer; }
 }
 .hero-bg{
   position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(5,5,5,.35) 0%, rgba(5,5,5,.6) 45%, var(--bg) 96%), url('assets/lion-gate.jpg') no-repeat center center;
+  background:linear-gradient(180deg, rgba(5,5,5,.35) 0%, rgba(5,5,5,.6) 45%, var(--bg) 96%), url('assets/Background.jpg') no-repeat center center;
   background-size:cover; background-position:center 30%;
 }
 .hero-grid-overlay{
