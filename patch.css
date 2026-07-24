@@ -93,7 +93,8 @@
 
 /* Hero corner lotus, branding, and unique hero layout */
 .hero-container{ position:relative; min-height:100vh; display:flex; align-items:center; overflow:hidden; }
-.hero-bg{ position:absolute; inset:0; background-image: linear-gradient(180deg, rgba(5,5,5,.25) 0%, rgba(5,5,5,.8) 55%, rgba(5,5,5,.97) 100%), url('assets/lion-gate.jpg'); background-size: cover; background-position: center 25%; background-repeat: no-repeat; }
+.hero-bg{ position:absolute; inset:0; background-image: linear-gradient(180deg, rgba(5,5,5,.25) 0%, rgba(5,5,5,.8) 55%, rgba(5,5,5,.97) 100%), url('assets/Background.jpg'); background-size: cover; background-position: center 25%; background-repeat: no-repeat; }
+body.bg-img-fallback .hero-bg{ background-image: linear-gradient(180deg, rgba(5,5,5,.25) 0%, rgba(5,5,5,.8) 55%, rgba(5,5,5,.97) 100%), url('assets/lion-gate.jpg'); }
 .hero-lotus--tl{ top:18px; left:14px; }
 .hero-lotus--tr{ top:16px; right:14px; transform:scaleX(-1); }
 .hero-lotus--bl{ bottom:14px; left:12px; transform:scaleY(-1); }

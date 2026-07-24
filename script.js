@@ -1,6 +1,16 @@
 /* ROAR — Guild Protocol build: interactions */
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ---------- Banner image availability check ----------
+     Both hero banners are styled to use assets/Background.jpg.
+     If that file hasn't been added to the assets folder yet,
+     fall back to an existing photo instead of a blank hero. */
+  (() => {
+    const test = new Image();
+    test.onerror = () => document.body.classList.add('bg-img-fallback');
+    test.src = 'assets/Background.jpg';
+  })();
+
   /* ---------- Preloader ---------- */
   const pre = document.getElementById('preloader');
   if(pre){

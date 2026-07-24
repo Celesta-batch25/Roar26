@@ -18,8 +18,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#schedule">Schedule</a></li>
-      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="index.html#rules">Rules</a></li>
       <li><a href="index.html#contact">Contact</a></li>
       <li><a href="index.html" class="nav-cta">Back Home</a></li>
     </ul>
@@ -29,13 +28,13 @@
 
 <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
 
-<!-- ============ 1. HERO BANNER ============ -->
+<!-- ============ HERO BANNER ============ -->
 <header class="reg-hero">
   <div class="reg-hero-bg"></div>
   <div class="wrap reg-hero-content">
-    <div class="eyebrow">Secure Your Seat</div>
-    <h1>Register for ROAR</h1>
-    <p>Complete the form below to confirm your place at the Annual Prefects' Day of Dharmapala Vidyalaya, Pannipitiya. It takes less than three minutes.</p>
+    <div class="eyebrow">ROAR Event Pass</div>
+    <h1>Registration Form</h1>
+    <p>Complete the form below to receive your official ROAR 2026 event pass. Registration is open to Prefects, Old Prefects, and invited school prefects.</p>
   </div>
 </header>
 
@@ -43,29 +42,45 @@
   <div class="wrap">
     <div class="form-shell">
 
-      <!-- FORM -->
-      <form id="regForm" novalidate>
+      <div class="process-intro-card" id="processIntroCard">
+        <div class="process-intro-head">
+          <span class="step-num">Before You Begin</span>
+          <h3>Registration Process</h3>
+        </div>
+        <ol class="process-steps">
+          <li>Review the registration steps carefully and choose the correct participant category.</li>
+          <li>Fill in your personal and school details accurately so your pass can be prepared correctly.</li>
+          <li>Upload a clear passport-style photo and submit the form for organizer review.</li>
+        </ol>
+        <label class="check-row process-check-row">
+          <input type="checkbox" id="processAgreeCheckbox">
+          <span>I have read the registration process and agree to continue.</span>
+        </label>
+      </div>
 
-        <!-- ============ 2. PARTICIPANT INFORMATION ============ -->
+      <div class="registration-form-area" id="registrationFormArea" aria-hidden="true">
+        <!-- FORM -->
+        <form id="regForm" novalidate>
+
+        <!-- ============ 1. PERSONAL INFORMATION ============ -->
         <div class="form-step glass">
-          <span class="step-num">Step 01</span>
-          <h3>Participant Information</h3>
+          <span class="step-num">Section 01</span>
+          <h3>Personal Information</h3>
           <div class="field-row">
             <div class="field">
               <label>Full Name <span class="req">*</span></label>
-              <input type="text" name="fullName" placeholder="As per school records" required>
+              <input type="text" name="fullName" placeholder="As per school / ID records" required>
               <span class="err-text">Please enter the participant's full name.</span>
             </div>
             <div class="field">
-              <label>Preferred Name</label>
+              <label>Preferred Name <span class="field-hint" style="display:inline;margin:0;">(as on the pass)</span></label>
               <input type="text" name="preferredName" placeholder="Optional">
             </div>
           </div>
           <div class="field-row">
             <div class="field">
-              <label>Date of Birth <span class="req">*</span></label>
-              <input type="text" name="dob" placeholder="DD/MM/YYYY" required>
-              <span class="err-text">Please enter a valid date of birth.</span>
+              <label>Date of Birth <span class="field-hint" style="display:inline;margin:0;">(Optional)</span></label>
+              <input type="date" name="dob">
             </div>
             <div class="field">
               <label>Gender <span class="req">*</span></label>
@@ -80,35 +95,80 @@
           </div>
         </div>
 
+        <!-- ============ 2. PARTICIPANT CATEGORY ============ -->
+        <div class="form-step glass">
+          <span class="step-num">Section 02</span>
+          <h3>Participant Category</h3>
+          <div class="category-grid">
+            <label class="category-option">
+              <input type="radio" name="category" value="Prefect" required>
+              <span class="cat-icon">🦁</span>
+              <span class="cat-label">Prefect</span>
+            </label>
+            <label class="category-option">
+              <input type="radio" name="category" value="Old Prefect (Alumni)">
+              <span class="cat-icon">👑</span>
+              <span class="cat-label">Old Prefect (Alumni)</span>
+            </label>
+            <label class="category-option">
+              <input type="radio" name="category" value="Invited School Prefect">
+              <span class="cat-icon">🎖️</span>
+              <span class="cat-label">Invited School Prefect</span>
+            </label>
+          </div>
+          <span class="err-text" id="categoryErr">Please choose a participant category.</span>
+          <p class="category-note">Teachers and general guests are not included in this registration system.</p>
+        </div>
+
         <!-- ============ 3. SCHOOL INFORMATION ============ -->
         <div class="form-step glass">
-          <span class="step-num">Step 02</span>
+          <span class="step-num">Section 03</span>
           <h3>School Information</h3>
           <div class="field">
             <label>School Name <span class="req">*</span></label>
-            <input type="text" name="schoolName" value="Dharmapala Vidyalaya, Pannipitiya" required>
+            <input type="text" name="schoolName" placeholder="e.g. Dharmapala Vidyalaya, Pannipitiya" required>
             <span class="err-text">Please enter your school name.</span>
           </div>
-          <div class="field-row">
-            <div class="field">
-              <label>Grade / Year <span class="req">*</span></label>
-              <input type="text" name="grade" placeholder="e.g. Grade 12" required>
-              <span class="err-text">Please enter grade or year.</span>
-            </div>
-            <div class="field">
-              <label>Class / Section</label>
-              <input type="text" name="section" placeholder="e.g. 12 A">
-            </div>
-          </div>
-          <div class="field">
-            <label>Admission / Index Number</label>
-            <input type="text" name="admissionNo" placeholder="Optional">
+          <div class="field" id="gradeField">
+            <label>Grade <span class="field-hint" style="display:inline;margin:0;">(Students only)</span></label>
+            <input type="text" name="grade" placeholder="e.g. Grade 12">
           </div>
         </div>
 
-        <!-- ============ 4. CONTACT INFORMATION ============ -->
+        <!-- ============ 4. PREFECT INFORMATION (conditional) ============ -->
+        <div class="form-step glass conditional-section" id="prefectInfoSection">
+          <span class="step-num">Section 04</span>
+          <h3>Prefect Information</h3>
+          <div class="field">
+            <label>Batch <span class="req">*</span></label>
+            <input type="text" name="batch" id="batchInput" placeholder="e.g. 2026 A/L Batch">
+            <span class="field-hint">Example: 2026 A/L Batch</span>
+          </div>
+          <div class="field" id="positionField">
+            <label>Current Position <span class="field-hint" style="display:inline;margin:0;">(Optional — only for Old Prefects)</span></label>
+            <select name="position">
+              <option value="">Select</option>
+              <option>Head Prefect</option>
+              <option>Deputy Head Prefect</option>
+              <option>Senior Prefect</option>
+              <option>Prefect</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Prefect Camp Access</label>
+            <div class="camp-access-box" id="campAccessBox">
+              <input type="checkbox" name="campAccess" id="campAccessInput">
+              <div>
+                <span class="camp-label" id="campAccessLabel">Prefect Camp Access</span>
+                <span class="camp-sub" id="campAccessSub">Automatically marked Yes for current Prefects.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ 5. CONTACT INFORMATION ============ -->
         <div class="form-step glass">
-          <span class="step-num">Step 03</span>
+          <span class="step-num">Section 05</span>
           <h3>Contact Information</h3>
           <div class="field-row">
             <div class="field">
@@ -117,83 +177,75 @@
               <span class="err-text">Please enter a valid mobile number.</span>
             </div>
             <div class="field">
-              <label>Email Address <span class="req">*</span></label>
-              <input type="email" name="email" placeholder="you@example.com" required>
-              <span class="err-text">Please enter a valid email address.</span>
+              <label>WhatsApp Number <span class="field-hint" style="display:inline;margin:0;">(Optional)</span></label>
+              <input type="tel" name="whatsapp" placeholder="Optional, if different">
             </div>
           </div>
           <div class="field">
-            <label>WhatsApp Number</label>
-            <input type="tel" name="whatsapp" placeholder="Optional, if different">
+            <label>Email Address <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="you@example.com" required>
+            <span class="err-text">Please enter a valid email address.</span>
           </div>
         </div>
 
-        <!-- ============ 5. PARENT / GUARDIAN DETAILS (COMPULSORY) ============ -->
+        <!-- ============ 6. PHOTO UPLOAD ============ -->
         <div class="form-step glass">
-          <span class="step-num">Step 04 · Compulsory</span>
-          <h3>Parent / Guardian Details</h3>
+          <span class="step-num">Section 06</span>
+          <h3>Photo Upload <span class="req">*</span></h3>
+          <div class="photo-upload-zone">
+            <div class="photo-preview-box" id="photoPreviewBox">
+              <span class="pp-placeholder">🧑</span>
+              <img id="photoPreviewImg" alt="Photo preview">
+            </div>
+            <div class="photo-upload-info">
+              <label class="upload-btn">
+                <span id="photoUploadBtnLabel">Choose Photo</span>
+                <input type="file" id="passportPhotoInput" name="photo" accept="image/jpeg,image/png">
+              </label>
+              <div class="photo-rules">Passport-style photo &middot; JPG or PNG &middot; Maximum size 5&nbsp;MB.<br>This photo will appear on your digital/printed event pass.</div>
+              <span class="photo-filename" id="photoFileName"></span>
+              <span class="photo-error" id="photoError">File must be a JPG or PNG under 5 MB.</span>
+            </div>
+          </div>
+          <span class="err-text" id="photoRequiredErr" style="display:none;margin-top:10px;">Please upload a passport-style photo.</span>
+        </div>
+
+        <!-- ============ 7. EMERGENCY CONTACT (Optional) ============ -->
+        <div class="form-step glass">
+          <span class="step-num">Section 07 · Optional</span>
+          <h3>Emergency Contact</h3>
           <div class="field-row">
             <div class="field">
-              <label>Parent / Guardian Name <span class="req">*</span></label>
-              <input type="text" name="guardianName" required>
-              <span class="err-text">Please enter the parent or guardian's name.</span>
+              <label>Name</label>
+              <input type="text" name="emergencyName" placeholder="Optional">
             </div>
             <div class="field">
-              <label>Relationship <span class="req">*</span></label>
-              <select name="guardianRelation" required>
-                <option value="">Select</option>
-                <option>Father</option>
-                <option>Mother</option>
-                <option>Guardian</option>
-              </select>
-              <span class="err-text">Please select a relationship.</span>
+              <label>Mobile Number</label>
+              <input type="tel" name="emergencyMobile" placeholder="Optional">
             </div>
           </div>
           <div class="field">
-            <label>Parent / Guardian Contact Number <span class="req">*</span></label>
-            <input type="tel" name="guardianMobile" placeholder="07X XXX XXXX" required>
-            <span class="err-text">Please enter a valid contact number.</span>
+            <label>Relation</label>
+            <input type="text" name="emergencyRelation" placeholder="e.g. Mother, Father, Guardian">
           </div>
         </div>
 
-        <!-- ============ 6. EVENT CATEGORY / ROLE ============ -->
+        <!-- ============ 8. CONSENT ============ -->
         <div class="form-step glass">
-          <span class="step-num">Step 05</span>
-          <h3>Event Category / Role</h3>
-          <div class="field">
-            <label>Attending As <span class="req">*</span></label>
-            <div class="role-grid">
-              <label class="role-option"><input type="radio" name="role" value="Prefect" required><span>Prefect</span><small>Current Guild member</small></label>
-              <label class="role-option"><input type="radio" name="role" value="Student"><span>Student</span><small>General attendee</small></label>
-              <label class="role-option"><input type="radio" name="role" value="Parent / Guardian"><span>Parent / Guardian</span><small>Attending with a student</small></label>
-              <label class="role-option"><input type="radio" name="role" value="Old Boy / Alumnus"><span>Old Boy / Alumnus</span><small>Past student</small></label>
-              <label class="role-option"><input type="radio" name="role" value="Staff"><span>Staff</span><small>Teaching / non-teaching</small></label>
-              <label class="role-option"><input type="radio" name="role" value="Invited Guest"><span>Invited Guest</span><small>Special invitee</small></label>
-            </div>
-            <span class="err-text" id="roleErr">Please select a category.</span>
-          </div>
-        </div>
-
-        <!-- ============ 7. TERMS & CONDITIONS ============ -->
-        <div class="form-step glass">
-          <span class="step-num">Step 06</span>
-          <h3>Terms &amp; Conditions</h3>
-          <div class="terms-box">
-            <p>1. Registration confirms your intent to attend ROAR and is required for entry.</p>
-            <p>2. Entry is subject to presentation of the QR confirmation issued after registration.</p>
-            <p>3. Formal attire is expected; prefects should wear official Guild uniform unless notified otherwise.</p>
-            <p>4. Photography and videography will take place during the event and may be used for official school publications.</p>
-            <p>5. The organizing committee reserves the right to make changes to the schedule where necessary.</p>
-            <p>6. Personal information submitted is used solely for event coordination and will not be shared with third parties.</p>
-          </div>
-          <label class="check-row">
-            <input type="checkbox" name="agreeTerms" required>
-            <span>I have read and agree to the Terms &amp; Conditions, and I confirm the details above are accurate. <span class="req">*</span></span>
+          <span class="step-num">Section 08</span>
+          <h3>Consent</h3>
+          <label class="check-row" style="margin-bottom:16px;">
+            <input type="checkbox" name="confirmAccurate" required>
+            <span>I confirm that the information provided is accurate. <span class="req">*</span></span>
           </label>
-          <span class="err-text" id="termsErr">You must accept the terms to continue.</span>
+          <label class="check-row">
+            <input type="checkbox" name="agreeRules" required>
+            <span>I agree to the event rules and understand that this registration is for an official ROAR event pass. <span class="req">*</span></span>
+          </label>
+          <span class="err-text" id="consentErr">Please confirm both statements to continue.</span>
         </div>
 
-        <!-- ============ 8. SUBMIT REGISTRATION ============ -->
+        <!-- ============ 9. SUBMIT ============ -->
         <div class="form-step glass">
           <div class="submit-row">
             <button type="submit" class="btn btn-primary" id="submitBtn">Submit Registration</button>
@@ -202,8 +254,9 @@
         </div>
 
       </form>
+      </div>
 
-      <!-- ============ 9. REGISTRATION SUCCESS & QR CODE ============ -->
+      <!-- ============ CONFIRMATION PANEL ============ -->
       <div id="success-panel" class="glass">
         <div class="success-seal">
           <svg viewBox="0 0 100 100" fill="none">
@@ -213,11 +266,13 @@
             <path d="M38 50l8 8 16-18" stroke="#F5D76E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </svg>
         </div>
-        <div class="eyebrow" style="justify-content:center;">Confirmed</div>
-        <h2>You're Registered for ROAR!</h2>
-        <p>A confirmation has been recorded. Present the QR code below at the entrance on the day of the event. A themed confirmation email with this pass has also been sent to your inbox.</p>
-        <div class="reg-id" id="regIdDisplay">REG-000000</div>
-        <div class="qr-box"><img id="qrImage" src="" alt="Registration QR code"></div>
+        <div class="eyebrow" style="justify-content:center;">✅ Registration Successful</div>
+        <h2>Your ROAR Pass is Being Processed</h2>
+        <div class="reg-id" id="regIdDisplay">ROAR-2026-0000</div>
+        <div class="success-category" id="successCategory">CATEGORY</div>
+        <div class="success-name" id="successName">Your Name</div>
+        <div class="qr-box"><img id="qrImage" src="" alt="Registration QR code for event check-in"></div>
+        <p class="success-note">Your event pass will be verified by the organizing committee. You will receive further instructions via email or WhatsApp.</p>
         <a href="index.html" class="btn btn-ghost">Back to ROAR Home</a>
       </div>
 
