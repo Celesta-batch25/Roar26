@@ -5,7 +5,7 @@
       (Deploy > New deployment > Web app > Execute as: Me,
       Who has access: Anyone). See Code.gs for the backend.
    ========================================================= */
-const APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxstr-Jf851GQ_UhNFFA5WP8fyK6jUg9eglF9UHYGG58HxYrWnQWANp7QOCbUMhXC3B/exec";
 
 const MAX_PHOTO_BYTES = 5 * 1024 * 1024; // 5 MB
 
